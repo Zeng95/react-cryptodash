@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
 
+import { AppContext } from '../context/AppContext'
+
 const AppNavBarStyled = styled.header`
   display: grid;
   grid-template-columns: 180px auto 100px 100px;
@@ -21,10 +23,15 @@ const ControlButtonElem = styled.button`
   ${props =>
     props.active &&
     css`
-      color: red;
+      text-shadow: 0px 0px 60px #03ff03;
     `}
+
+  &:focus {
+    outline: none;
+  }
 `
 
+// Extend another class
 class ControlButton extends Component {
   capitalize(str) {
     // 首字母大写，其余字母小写
@@ -32,12 +39,23 @@ class ControlButton extends Component {
   }
 
   render() {
-    const { name, active } = this.props
+    const { name } = this.props
 
     return (
-      <ControlButtonElem active={active}>
-        {this.capitalize(name)}
-      </ControlButtonElem>
+      <AppContext.Consumer>
+        {appContext => {
+          const { page, setPage } = appContext
+
+          return (
+            <ControlButtonElem
+              active={page === name}
+              onClick={() => setPage(name)}
+            >
+              {this.capitalize(name)}
+            </ControlButtonElem>
+          )
+        }}
+      </AppContext.Consumer>
     )
   }
 }
