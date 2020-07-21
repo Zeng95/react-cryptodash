@@ -1,15 +1,10 @@
 import React, { Component } from 'react'
 
+import { AppContextProvider } from '../../context/AppContext'
+
 import AppLayout from './AppLayout'
 import AppNavBar from './AppNavBar'
-
-import { AppContextProvider } from '../context/AppContext'
-
-class Welcome extends Component {
-  render() {
-    return <h1>Welcome to CryptoDash</h1>
-  }
-}
+import Settings from '../Settings'
 
 class App extends Component {
   render() {
@@ -17,7 +12,7 @@ class App extends Component {
       <AppLayout>
         <AppContextProvider>
           <AppNavBar />
-          <Welcome />
+          <Settings />
         </AppContextProvider>
       </AppLayout>
     )

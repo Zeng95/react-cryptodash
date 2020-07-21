@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
 
-import { AppContext } from '../context/AppContext'
+import { AppContext } from '../../context/AppContext'
 
 const AppNavBarStyled = styled.header`
   display: grid;

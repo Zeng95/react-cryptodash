@@ -1,6 +1,6 @@
 {
   "navbar": {
-    "dashboard": "Dashboard",
-    "settings": "Settings"
+    "dashboard-button": "Dashboard",
+    "settings-button": "Settings"
   }
 }
