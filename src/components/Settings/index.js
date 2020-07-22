@@ -8,7 +8,7 @@ class Settings extends Component {
   render() {
     return (
       <Page name="settings">
-        <WelcomeMessage />
+        <WelcomeMessage /> 
         <ConfirmButton />
       </Page>
     )

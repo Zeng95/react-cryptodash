@@ -6,6 +6,7 @@ import { AppContext } from '../../context/AppContext'
 const AppNavBarStyled = styled.header`
   display: grid;
   grid-template-columns: 180px auto 100px 100px;
+  margin-bottom: 40px;
 `
 
 const Logo = styled.h1`

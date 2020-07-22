@@ -5,6 +5,7 @@ import AppContextProvider from '../../context/AppContext'
 import AppLayout from './AppLayout'
 import AppNavBar from './AppNavBar'
 import Settings from '../Settings'
+import Content from '../Shared/Content'
 
 class App extends Component {
   render() {
@@ -12,7 +13,10 @@ class App extends Component {
       <AppLayout>
         <AppContextProvider>
           <AppNavBar />
-          <Settings />
+
+          <Content>
+            <Settings />
+          </Content>
         </AppContextProvider>
       </AppLayout>
     )
