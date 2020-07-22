@@ -2,14 +2,15 @@ import React, { Component } from 'react'
 
 import WelcomeMessage from './WelcomeMessage'
 import ConfirmButton from './ConfirmButton'
+import Page from '../Shared/Page'
 
 class Settings extends Component {
   render() {
     return (
-      <div>
+      <Page name="settings">
         <WelcomeMessage />
         <ConfirmButton />
-      </div>
+      </Page>
     )
   }
 }

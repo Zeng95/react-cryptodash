@@ -9,21 +9,21 @@ const AppNavBarStyled = styled.header`
 `
 
 const Logo = styled.h1`
-  font-size: 1.5em;
   margin: 0;
+  font-size: 1.5em;
 `
 
 const ControlButtonElem = styled.button`
+  cursor: pointer;
   border: none;
   padding: 0;
   background-color: transparent;
   color: white;
-  cursor: pointer;
 
   ${props =>
     props.active &&
     css`
-      text-shadow: 0px 0px 60px #03ff03;
+      text-shadow: 0px 0px 20px #03ff03;
     `}
 
   &:focus {
@@ -39,12 +39,11 @@ class ControlButton extends Component {
   }
 
   render() {
-    const { name } = this.props
-
     return (
       <AppContext.Consumer>
         {appContext => {
           const { page, setPage } = appContext
+          const { name } = this.props
 
           return (
             <ControlButtonElem
