@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
 
+import Page from '../Shared/Page'
 import WelcomeMessage from './WelcomeMessage'
 import ConfirmButton from './ConfirmButton'
-import Page from '../Shared/Page'
+import CoinGrid from './CoinGrid'
 
 class Settings extends Component {
   render() {
     return (
       <Page name="settings">
-        <WelcomeMessage /> 
+        <WelcomeMessage />
         <ConfirmButton />
+        <CoinGrid />
       </Page>
     )
   }
