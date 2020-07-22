@@ -3,7 +3,7 @@ import React from 'react'
 import useApp from '../hooks/useApp'
 
 // Create a Context object
-const AppContext = React.createContext()
+export const AppContext = React.createContext()
 
 function AppContextProvider(props) {
   const app = useApp()
@@ -15,4 +15,4 @@ function AppContextProvider(props) {
   )
 }
 
-export { AppContext, AppContextProvider }
+export default AppContextProvider

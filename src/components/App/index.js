@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { AppContextProvider } from '../../context/AppContext'
+import AppContextProvider from '../../context/AppContext'
 
 import AppLayout from './AppLayout'
 import AppNavBar from './AppNavBar'

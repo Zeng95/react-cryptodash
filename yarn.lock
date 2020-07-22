@@ -3369,6 +3369,11 @@ crypto-browserify@^3.11.0:
     randombytes "^2.0.0"
     randomfill "^1.0.3"
 
+cryptocompare@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npm.taobao.org/cryptocompare/download/cryptocompare-1.0.0.tgz#d93bafd037686ec13bbf3cf6b40187310f991a3d"
+  integrity sha1-2Tuv0DdobsE7vzz2tAGHMQ+ZGj0=
+
 css-blank-pseudo@^0.1.4:
   version "0.1.4"
   resolved "https://registry.npm.taobao.org/css-blank-pseudo/download/css-blank-pseudo-0.1.4.tgz#dfdefd3254bf8a82027993674ccf35483bfcb3c5"
