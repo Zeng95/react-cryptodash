@@ -15,11 +15,9 @@ function useCoins() {
   async function fetchCoins() {
     try {
       const { Data, BaseImageUrl } = await cc.coinList()
-      const coinList = Data
-      const baseUrl = BaseImageUrl
 
-      setCoins(coinList)
-      setCoinBaseUrl(baseUrl)
+      setCoins(Data)
+      setCoinBaseUrl(BaseImageUrl)
     } catch (err) {
       console.error(err)
     }
