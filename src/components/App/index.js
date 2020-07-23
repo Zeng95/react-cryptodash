@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import AppContextProvider from '../../context/AppContext'
+import SettingsContextProvider from '../../context/SettingsContext'
 
 import AppLayout from './AppLayout'
 import AppNavBar from './AppNavBar'
@@ -12,11 +13,13 @@ class App extends Component {
     return (
       <AppLayout>
         <AppContextProvider>
-          <AppNavBar />
+          <SettingsContextProvider>
+            <AppNavBar />
 
-          <Content>
-            <Settings />
-          </Content>
+            <Content>
+              <Settings />
+            </Content>
+          </SettingsContextProvider>
         </AppContextProvider>
       </AppLayout>
     )

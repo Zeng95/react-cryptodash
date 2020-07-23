@@ -1,31 +1,36 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
-import { AppContext } from '../../context/AppContext'
+import { SettingsContext } from '../../context/SettingsContext'
 
-const CoinGridStyled = styled.ul`
+import CoinTile from './CoinTile'
+
+const CoinGridStyled = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  padding: 0;
-  list-style: none;
+  grid-gap: 15px;
+  margin-top: 40px;
 `
 
 class CoinGrid extends Component {
   render() {
     return (
-      <AppContext.Consumer>
-        {appContext => {
-          const coinList = Object.keys(appContext.coinList)
+      <SettingsContext.Consumer>
+        {settingsContext => {
+          // The first thousand coins
+          const coinList = Object.keys(settingsContext.coins).slice(0, 100)
 
           return (
             <CoinGridStyled>
-              {coinList.map(coinKey => (
-                <li key={coinKey}>{coinKey}</li>
-              ))}
+              {coinList.map(coinKey => {
+                const coin = settingsContext.coins[coinKey]
+
+                return <CoinTile key={coinKey} coin={coin} />
+              })}
             </CoinGridStyled>
           )
         }}
-      </AppContext.Consumer>
+      </SettingsContext.Consumer>
     )
   }
 }
