@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { SettingsContext } from '../../context/SettingsContext'
 
-class CoinImage extends Component {
+class CoinTileImage extends Component {
   render() {
     return (
       <SettingsContext.Consumer>
@@ -19,4 +19,4 @@ class CoinImage extends Component {
   }
 }
 
-export default CoinImage
+export default CoinTileImage

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import { SettingsContext } from '../../context/SettingsContext'
-
 import CoinTile from './CoinTile'
 
 const CoinGridStyled = styled.div`
@@ -17,15 +16,18 @@ class CoinGrid extends Component {
     return (
       <SettingsContext.Consumer>
         {settingsContext => {
-          // The first thousand coins
-          const coinList = Object.keys(settingsContext.coins).slice(0, 100)
+          const { topSection } = this.props
+          const end = topSection ? 10 : 500
+          const coinList = Object.keys(settingsContext.coins).slice(0, end) // The first five hundred coins
 
           return (
             <CoinGridStyled>
               {coinList.map(coinKey => {
                 const coin = settingsContext.coins[coinKey]
 
-                return <CoinTile key={coinKey} coin={coin} />
+                return (
+                  <CoinTile key={coinKey} coin={coin} topSection={topSection} />
+                )
               })}
             </CoinGridStyled>
           )

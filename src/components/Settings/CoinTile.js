@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
 
-import { SelectableTile } from '../Shared/Tile'
-import CoinHeaderGrid from './CoinHeaderGrid'
-import CoinImage from '../Shared/CoinImage'
+import { SelectableTile, DeletableTile } from '../Shared/Tile'
+import CoinTileHeaderGrid from './CoinTileHeaderGrid'
+import CoinTileImage from '../Shared/CoinTileImage'
 
 class CoinTile extends Component {
   render() {
-    const { coin } = this.props
+    const { coin, topSection } = this.props
+    const CoinTileClass = topSection ? DeletableTile : SelectableTile
 
     return (
-      <SelectableTile>
-        <CoinHeaderGrid coin={coin}></CoinHeaderGrid>
-        <CoinImage coin={coin}></CoinImage>
-      </SelectableTile>
+      <CoinTileClass>
+        <CoinTileHeaderGrid coin={coin} topSection={topSection} />
+        <CoinTileImage coin={coin} />
+      </CoinTileClass>
     )
   }
 }
