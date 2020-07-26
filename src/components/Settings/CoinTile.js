@@ -10,7 +10,7 @@ class CoinTile extends Component {
   handleClick = (addCoin, removeCoin) => {
     const { coin, topSection } = this.props
 
-    topSection ? removeCoin() : addCoin(coin.Name)
+    topSection ? removeCoin(coin.Name) : addCoin(coin.Name)
   }
 
   render() {

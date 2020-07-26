@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import cc from 'cryptocompare'
+import _ from 'lodash'
 
 cc.setApiKey('ab4c13e647046a6f66904bc40fc89e06f6309fbfae3299654fce359eaf895548')
 
@@ -32,15 +33,19 @@ function useCoins() {
   }
 
   function addCoin(coinKey) {
+    const favorites = [...favoriteCoins]
+
+    // Less than 10
     if (favoriteCoins.length < MAX_FAVORITES) {
-      const favorites = [...favoriteCoins, coinKey]
-      console.log(favorites, coinKey)
+      favorites.push(coinKey)
       setFavoriteCoins(favorites)
     }
   }
 
-  function removeCoin(coin) {
-    console.log('remove')
+  function removeCoin(coinKey) {
+    const favorites = [...favoriteCoins]
+
+    setFavoriteCoins(_.pull(favorites, coinKey))
   }
 
   return { coins, favoriteCoins, coinBaseUrl, addCoin, removeCoin }
