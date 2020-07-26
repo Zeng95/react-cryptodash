@@ -3,16 +3,13 @@ import React from 'react'
 import useApp from '../hooks/useApp'
 
 // Create a Context object
-export const AppContext = React.createContext()
+const AppContext = React.createContext()
 
 function AppContextProvider(props) {
   const app = useApp()
+  const { Provider } = AppContext
 
-  return (
-    <AppContext.Provider value={{ ...app }}>
-      {props.children}
-    </AppContext.Provider>
-  )
+  return <Provider value={{ ...app }}>{props.children}</Provider>
 }
 
-export default AppContextProvider
+export { AppContext, AppContextProvider }

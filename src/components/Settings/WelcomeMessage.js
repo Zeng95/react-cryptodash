@@ -4,8 +4,10 @@ import { AppContext } from '../../context/AppContext'
 
 class Welcome extends Component {
   render() {
+    const { Consumer } = AppContext
+
     return (
-      <AppContext.Consumer>
+      <Consumer>
         {appContext => {
           const { firstVisit } = appContext
 
@@ -15,7 +17,7 @@ class Welcome extends Component {
             </div>
           ) : null
         }}
-      </AppContext.Consumer>
+      </Consumer>
     )
   }
 }

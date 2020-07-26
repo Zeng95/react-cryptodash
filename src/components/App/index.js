@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import AppContextProvider from '../../context/AppContext'
-import SettingsContextProvider from '../../context/SettingsContext'
+import { AppContextProvider } from '../../context/AppContext'
+import { SettingsContextProvider } from '../../context/SettingsContext'
 
 import AppLayout from './AppLayout'
 import AppNavBar from './AppNavBar'

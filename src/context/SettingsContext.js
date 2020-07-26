@@ -3,16 +3,13 @@ import React from 'react'
 import useCoins from '../hooks/useCoins'
 
 // Create a Context object
-export const SettingsContext = React.createContext()
+const SettingsContext = React.createContext()
 
 function SettingsContextProvider(props) {
   const coins = useCoins()
+  const { Provider } = SettingsContext
 
-  return (
-    <SettingsContext.Provider value={{ ...coins }}>
-      {props.children}
-    </SettingsContext.Provider>
-  )
+  return <Provider value={{ ...coins }}>{props.children}</Provider>
 }
 
-export default SettingsContextProvider
+export { SettingsContext, SettingsContextProvider }

@@ -40,8 +40,10 @@ class ControlButton extends Component {
   }
 
   render() {
+    const { Consumer } = AppContext
+
     return (
-      <AppContext.Consumer>
+      <Consumer>
         {appContext => {
           const { page, setPage } = appContext
           const { name } = this.props
@@ -55,7 +57,7 @@ class ControlButton extends Component {
             </ControlButtonElem>
           )
         }}
-      </AppContext.Consumer>
+      </Consumer>
     )
   }
 }

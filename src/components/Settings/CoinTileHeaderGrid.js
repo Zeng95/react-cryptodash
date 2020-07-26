@@ -8,7 +8,9 @@ const CoinTileHeaderGridStyled = styled.header`
   display: grid;
   grid-template-columns: 1fr 1fr;
 `
-const CoinName = styled.span``
+const CoinName = styled.span`
+  font-style: italic;
+`
 const CoinSymbol = styled.div`
   justify-self: right;
 `

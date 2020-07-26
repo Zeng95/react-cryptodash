@@ -13,17 +13,21 @@ const CoinGridStyled = styled.div`
 
 class CoinGrid extends Component {
   render() {
+    const { Consumer } = SettingsContext
+
     return (
-      <SettingsContext.Consumer>
+      <Consumer>
         {settingsContext => {
+          const { coins, favoriteCoins: favCoinKeys } = settingsContext
           const { topSection } = this.props
-          const end = topSection ? 10 : 500
-          const coinList = Object.keys(settingsContext.coins).slice(0, end) // The first five hundred coins
+          const allCoinKeys = Object.keys(coins).slice(0, 500) // The first five hundred coin keys
+
+          const coinKeyList = topSection ? favCoinKeys : allCoinKeys
 
           return (
             <CoinGridStyled>
-              {coinList.map(coinKey => {
-                const coin = settingsContext.coins[coinKey]
+              {coinKeyList.map(coinKey => {
+                const coin = coins[coinKey]
 
                 return (
                   <CoinTile key={coinKey} coin={coin} topSection={topSection} />
@@ -32,7 +36,7 @@ class CoinGrid extends Component {
             </CoinGridStyled>
           )
         }}
-      </SettingsContext.Consumer>
+      </Consumer>
     )
   }
 }

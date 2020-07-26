@@ -28,8 +28,10 @@ const ConfirmButtonStyled = styled.button`
 
 class ConfirmButton extends Component {
   render() {
+    const { Consumer } = AppContext
+
     return (
-      <AppContext.Consumer>
+      <Consumer>
         {appContext => {
           const { confirmFavorites } = appContext
 
@@ -41,7 +43,7 @@ class ConfirmButton extends Component {
             </CenterDiv>
           )
         }}
-      </AppContext.Consumer>
+      </Consumer>
     )
   }
 }

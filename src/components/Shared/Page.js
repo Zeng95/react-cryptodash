@@ -4,8 +4,10 @@ import { AppContext } from '../../context/AppContext'
 
 class Page extends Component {
   render() {
+    const { Consumer } = AppContext
+
     return (
-      <AppContext.Consumer>
+      <Consumer>
         {appContext => {
           const { page } = appContext
           const { name, children } = this.props
@@ -16,7 +18,7 @@ class Page extends Component {
 
           return null
         }}
-      </AppContext.Consumer>
+      </Consumer>
     )
   }
 }

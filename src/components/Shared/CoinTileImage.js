@@ -4,8 +4,10 @@ import { SettingsContext } from '../../context/SettingsContext'
 
 class CoinTileImage extends Component {
   render() {
+    const { Consumer } = SettingsContext
+
     return (
-      <SettingsContext.Consumer>
+      <Consumer>
         {settingsContext => {
           const { coinBaseUrl } = settingsContext
           const { ImageUrl: imgUrl, Symbol: symbol } = this.props.coin
@@ -14,7 +16,7 @@ class CoinTileImage extends Component {
             <img src={`${coinBaseUrl}${imgUrl}`} alt={symbol} height="50px" />
           )
         }}
-      </SettingsContext.Consumer>
+      </Consumer>
     )
   }
 }

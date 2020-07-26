@@ -4,8 +4,10 @@ import { SettingsContext } from '../../context/SettingsContext'
 
 class Content extends Component {
   render() {
+    const { Consumer } = SettingsContext
+
     return (
-      <SettingsContext.Consumer>
+      <Consumer>
         {settingsContext => {
           const { coins } = settingsContext
 
@@ -15,7 +17,7 @@ class Content extends Component {
 
           return this.props.children
         }}
-      </SettingsContext.Consumer>
+      </Consumer>
     )
   }
 }
