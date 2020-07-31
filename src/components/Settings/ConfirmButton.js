@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import { AppContext } from '../../context/AppContext'
+import { SettingsContext } from '../../context/SettingsContext'
 import { fontSize1, color3, greenBoxShadow } from '../Shared/Styles'
 
 const CenterDiv = styled.div`
@@ -28,22 +29,30 @@ const ConfirmButtonStyled = styled.button`
 
 class ConfirmButton extends Component {
   render() {
-    const { Consumer } = AppContext
+    const { Consumer: AppContextConsumer } = AppContext
+    const { Consumer: SettingsContextConsumer } = SettingsContext
 
     return (
-      <Consumer>
-        {appContext => {
-          const { confirmFavorites } = appContext
+      <AppContextConsumer>
+        {appContext => (
+          <SettingsContextConsumer>
+            {settingsContext => {
+              const { confirmFavorites } = appContext
+              const { favoriteCoins: favCoinKeys } = settingsContext
 
-          return (
-            <CenterDiv>
-              <ConfirmButtonStyled onClick={confirmFavorites}>
-                Confirm Favorites
-              </ConfirmButtonStyled>
-            </CenterDiv>
-          )
-        }}
-      </Consumer>
+              return (
+                <CenterDiv>
+                  <ConfirmButtonStyled
+                    onClick={() => confirmFavorites(favCoinKeys)}
+                  >
+                    Confirm Favorites
+                  </ConfirmButtonStyled>
+                </CenterDiv>
+              )
+            }}
+          </SettingsContextConsumer>
+        )}
+      </AppContextConsumer>
     )
   }
 }

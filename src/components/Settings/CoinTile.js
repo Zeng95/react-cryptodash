@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { SettingsContext } from '../../context/SettingsContext'
 
-import { SelectableTile, DeletableTile } from '../Shared/Tile'
+import { SelectableTile, DeletableTile, DisabledTile } from '../Shared/Tile'
 import CoinTileHeaderGrid from './CoinTileHeaderGrid'
 import CoinTileImage from '../Shared/CoinTileImage'
 
@@ -18,10 +18,19 @@ class CoinTile extends Component {
 
     return (
       <Consumer>
-        {settingsContext => {
-          const { addCoin, removeCoin } = settingsContext
+        {value => {
+          const { addCoin, removeCoin, isInFavoriteCoins } = value
           const { coin, topSection } = this.props
-          const CoinTileClass = topSection ? DeletableTile : SelectableTile
+
+          let CoinTileClass
+
+          if (topSection) {
+            CoinTileClass = DeletableTile
+          } else if (isInFavoriteCoins(coin.Name)) {
+            CoinTileClass = DisabledTile
+          } else {
+            CoinTileClass = SelectableTile
+          }
 
           return (
             <CoinTileClass

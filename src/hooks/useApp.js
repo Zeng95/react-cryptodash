@@ -18,11 +18,11 @@ function useApp(defaultPage) {
     }
   }
 
-  function confirmFavorites() {
+  function confirmFavorites(favorites) {
     setPage('dashboard')
     setFirstVisit(false)
 
-    localStorage.setItem('cryptoDash', JSON.stringify({ test: 'hello' }))
+    localStorage.setItem('cryptoDash', JSON.stringify({ favorites }))
   }
 
   return {

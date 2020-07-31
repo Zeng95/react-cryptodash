@@ -17,8 +17,8 @@ class CoinGrid extends Component {
 
     return (
       <Consumer>
-        {settingsContext => {
-          const { coins, favoriteCoins: favCoinKeys } = settingsContext
+        {value => {
+          const { coins, favoriteCoins: favCoinKeys } = value
           const { topSection } = this.props
           const allCoinKeys = Object.keys(coins).slice(0, 500) // The first five hundred coin keys
 

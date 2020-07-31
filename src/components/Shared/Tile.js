@@ -23,3 +23,8 @@ export const DeletableTile = styled(Tile)`
     ${redBoxShadow}
   }
 `
+// "pointer-events: none;" means users can not select
+export const DisabledTile = styled(Tile)`
+  pointer-events: none;
+  opacity: 0.4;
+`

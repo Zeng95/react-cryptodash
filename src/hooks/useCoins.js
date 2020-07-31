@@ -18,6 +18,7 @@ function useCoins() {
 
   // Will trigger the callback only after the first render
   useEffect(() => {
+    saveSettings()
     fetchCoins()
   }, [])
 
@@ -29,6 +30,15 @@ function useCoins() {
       setCoinBaseUrl(BaseImageUrl)
     } catch (err) {
       console.error(err)
+    }
+  }
+
+  function saveSettings() {
+    let cryptoDashData = JSON.parse(localStorage.getItem('cryptoDash'))
+
+    if (cryptoDashData) {
+      const { favorites } = cryptoDashData
+      setFavoriteCoins(favorites)
     }
   }
 
@@ -48,7 +58,18 @@ function useCoins() {
     setFavoriteCoins(_.pull(favorites, coinKey))
   }
 
-  return { coins, favoriteCoins, coinBaseUrl, addCoin, removeCoin }
+  function isInFavoriteCoins(coinKey) {
+    return favoriteCoins.includes(coinKey)
+  }
+
+  return {
+    coins,
+    favoriteCoins,
+    coinBaseUrl,
+    addCoin,
+    removeCoin,
+    isInFavoriteCoins
+  }
 }
 
 export default useCoins
