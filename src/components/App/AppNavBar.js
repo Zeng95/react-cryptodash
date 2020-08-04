@@ -21,7 +21,7 @@ const ControlButtonElem = styled.button`
   background-color: transparent;
   color: white;
 
-  ${props =>
+  ${(props) =>
     props.active &&
     css`
       text-shadow: 0px 0px 20px #03ff03;
@@ -44,8 +44,8 @@ class ControlButton extends Component {
 
     return (
       <Consumer>
-        {appContext => {
-          const { page, setPage } = appContext
+        {(value) => {
+          const { page, setPage } = value
           const { name } = this.props
 
           return (

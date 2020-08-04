@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-
 import { SettingsContext } from '../../context/SettingsContext'
-
-import { SelectableTile, DeletableTile, DisabledTile } from '../Shared/Tile'
-import CoinTileHeaderGrid from './CoinTileHeaderGrid'
 import CoinTileImage from '../Shared/CoinTileImage'
+import { DeletableTile, DisabledTile, SelectableTile } from '../Shared/Tile'
+import CoinTileHeaderGrid from './CoinTileHeaderGrid'
+
+const { Consumer } = SettingsContext
 
 class CoinTile extends Component {
   handleClick = (addCoin, removeCoin) => {
@@ -14,8 +14,6 @@ class CoinTile extends Component {
   }
 
   render() {
-    const { Consumer } = SettingsContext
-
     return (
       <Consumer>
         {(value) => {

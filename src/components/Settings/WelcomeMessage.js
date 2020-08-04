@@ -8,8 +8,8 @@ class Welcome extends Component {
 
     return (
       <Consumer>
-        {appContext => {
-          const { firstVisit } = appContext
+        {(value) => {
+          const { firstVisit } = value
 
           return firstVisit ? (
             <div>

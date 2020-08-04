@@ -1,5 +1,4 @@
 import React from 'react'
-
 import useCoins from '../hooks/useCoins'
 
 // Create a Context object

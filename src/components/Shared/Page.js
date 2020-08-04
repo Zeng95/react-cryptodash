@@ -1,19 +1,18 @@
 import React, { Component } from 'react'
-
 import { AppContext } from '../../context/AppContext'
+
+const { Consumer } = AppContext
 
 class Page extends Component {
   render() {
-    const { Consumer } = AppContext
-
     return (
       <Consumer>
-        {appContext => {
-          const { page } = appContext
+        {(value) => {
+          const { page } = value
           const { name, children } = this.props
 
           if (page === name) {
-            return <div>{children}</div>
+            return <div className="content">{children}</div>
           }
 
           return null

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-
 import { SettingsContext } from '../../context/SettingsContext'
 import CoinTile from './CoinTile'
 
+const { Consumer } = SettingsContext
 const CoinGridStyled = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -13,8 +13,6 @@ const CoinGridStyled = styled.div`
 
 class CoinGrid extends Component {
   render() {
-    const { Consumer } = SettingsContext
-
     return (
       <Consumer>
         {(value) => {

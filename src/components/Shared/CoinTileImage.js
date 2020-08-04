@@ -13,8 +13,8 @@ class CoinTileImage extends Component {
 
     return (
       <Consumer>
-        {settingsContext => {
-          const { coinBaseUrl } = settingsContext
+        {(value) => {
+          const { coinBaseUrl } = value
           const { ImageUrl: imgUrl, Symbol: symbol } = this.props.coin
 
           return <ImageStyled src={`${coinBaseUrl}${imgUrl}`} alt={symbol} />

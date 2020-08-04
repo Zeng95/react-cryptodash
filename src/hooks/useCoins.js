@@ -12,7 +12,7 @@ function useCoins() {
     'BTC',
     'ETH',
     'XMR',
-    'DOGE'
+    'DOGE',
   ])
   const [coinBaseUrl, setCoinBaseUrl] = useState()
 
@@ -62,13 +62,18 @@ function useCoins() {
     return favoriteCoins.includes(coinKey)
   }
 
+  function setFilteredCoins() {
+    console.log('filter coins')
+  }
+
   return {
     coins,
     favoriteCoins,
     coinBaseUrl,
     addCoin,
     removeCoin,
-    isInFavoriteCoins
+    isInFavoriteCoins,
+    setFilteredCoins,
   }
 }
 
