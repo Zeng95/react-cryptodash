@@ -18,7 +18,7 @@ class CoinTile extends Component {
 
     return (
       <Consumer>
-        {value => {
+        {(value) => {
           const { addCoin, removeCoin, isInFavoriteCoins } = value
           const { coin, topSection } = this.props
 

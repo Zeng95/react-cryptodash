@@ -17,7 +17,7 @@ class CoinGrid extends Component {
 
     return (
       <Consumer>
-        {value => {
+        {(value) => {
           const { coins, favoriteCoins: favCoinKeys } = value
           const { topSection } = this.props
           const allCoinKeys = Object.keys(coins).slice(0, 500) // The first five hundred coin keys
@@ -26,7 +26,7 @@ class CoinGrid extends Component {
 
           return (
             <CoinGridStyled>
-              {coinKeyList.map(coinKey => {
+              {coinKeyList.map((coinKey) => {
                 const coin = coins[coinKey]
 
                 return (

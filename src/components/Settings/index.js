@@ -4,6 +4,7 @@ import Page from '../Shared/Page'
 import WelcomeMessage from './WelcomeMessage'
 import ConfirmButton from './ConfirmButton'
 import CoinGrid from './CoinGrid'
+import Search from './Search'
 
 class Settings extends Component {
   render() {
@@ -12,6 +13,7 @@ class Settings extends Component {
         <WelcomeMessage />
         <CoinGrid topSection={true} />
         <ConfirmButton />
+        <Search />
         <CoinGrid topSection={false} />
       </Page>
     )
