@@ -11,3 +11,8 @@ body {
 .text-transparent {
   color: transparent;
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+}
