@@ -10,6 +10,9 @@ const SearchGrid = styled.div`
   display: grid;
   grid-template-columns: 200px 1fr;
 `
+const SearchTitle = styled.h2`
+  margin: 0;
+`
 const SearchInput = styled.input`
   ${darkBlueBackground}
   ${fontSize2}
@@ -20,38 +23,61 @@ const SearchInput = styled.input`
 `
 
 class Search extends Component {
-  handleFilter = _.debounce((inputValue, coins) => {
+  // Delay invoking function until after 1s
+  handleFilterCoins = _.debounce((inputValue, coins, setFilteredCoins) => {
+    // Get all the coin symbols
     const coinSymbols = Object.keys(coins)
-    const coinNames = coinSymbols.map((key) => coins[key].Name)
-
+    // Get all the coin names, map symbol to name
+    const coinNames = coinSymbols.map(key => coins[key].CoinName)
+    // Combine a list of the coin symbols and the coin names together
     const allStringsToSearch = coinSymbols.concat(coinNames)
-    const fuzzyResults = fuzzy.filter(inputValue, allStringsToSearch, {})
-    console.log(fuzzyResults)
+    // A list of the results that has come back from the search
+    const fuzzyResults = fuzzy
+      .filter(inputValue, allStringsToSearch, {})
+      .map(result => result.string)
 
-    // const results = allStringsToSearch.filter((item) => {
-    //   return item.toLowerCase().includes(inputValue.toLowerCase())
+    let results = {}
+    // Deduplicate(去除重复) the fuzzy results, reutrn an array
+    Object.entries(coins).forEach(item => {
+      const symbol = item[0]
+      const coin = item[1]
+      const name = coin.CoinName
+
+      if (fuzzyResults.includes(symbol) || fuzzyResults.includes(name)) {
+        results[symbol] = coin
+      }
+    })
+    setFilteredCoins(results)
+
+    // An easier way || 更简单的方法
+    // const filteredCoins = _.pickBy(coins, (coin, symbolKey) => {
+    //   const coinName = coin.CoinName
+    //   return fuzzyResults.includes(symbolKey) || fuzzyResults.includes(coinName)
     // })
-    // console.log(results)
   }, 1000)
 
   handleKeyUp(event, coins, setFilteredCoins) {
     const inputValue = event.target.value
-    this.handleFilter(inputValue, coins)
+
+    if (!inputValue) {
+      setFilteredCoins(null)
+      return false
+    }
+
+    this.handleFilterCoins(inputValue, coins, setFilteredCoins)
   }
 
   render() {
     return (
       <Consumer>
-        {(value) => {
-          const { coins, setFilteredCoins } = value
-
+        {({ coins, setFilteredCoins }) => {
           return (
             <SearchGrid>
-              <h2>Search all coins</h2>
+              <SearchTitle>Search all coins</SearchTitle>
               <SearchInput
-                onKeyUp={(event) => {
+                onKeyUp={event =>
                   this.handleKeyUp(event, coins, setFilteredCoins)
-                }}
+                }
               />
             </SearchGrid>
           )

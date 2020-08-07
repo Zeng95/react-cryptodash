@@ -7,14 +7,15 @@ cc.setApiKey('ab4c13e647046a6f66904bc40fc89e06f6309fbfae3299654fce359eaf895548')
 const MAX_FAVORITES = 10
 
 function useCoins() {
-  const [coins, setCoins] = useState([])
+  const [coins, setCoins] = useState()
+  const [coinBaseUrl, setCoinBaseUrl] = useState()
   const [favoriteCoins, setFavoriteCoins] = useState([
     'BTC',
     'ETH',
     'XMR',
-    'DOGE',
+    'DOGE'
   ])
-  const [coinBaseUrl, setCoinBaseUrl] = useState()
+  const [filteredCoins, setFilteredCoins] = useState()
 
   // Will trigger the callback only after the first render
   useEffect(() => {
@@ -62,18 +63,15 @@ function useCoins() {
     return favoriteCoins.includes(coinKey)
   }
 
-  function setFilteredCoins() {
-    console.log('filter coins')
-  }
-
   return {
     coins,
-    favoriteCoins,
     coinBaseUrl,
+    favoriteCoins,
+    filteredCoins,
     addCoin,
     removeCoin,
     isInFavoriteCoins,
-    setFilteredCoins,
+    setFilteredCoins
   }
 }
 

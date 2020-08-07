@@ -8,10 +8,8 @@ class Content extends Component {
   render() {
     return (
       <Consumer>
-        {(value) => {
-          const { coins } = value
-
-          if (coins.length === 0) {
+        {({ coins }) => {
+          if (!coins) {
             return <div>Loading Coins</div>
           }
 

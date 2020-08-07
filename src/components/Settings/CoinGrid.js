@@ -12,19 +12,28 @@ const CoinGridStyled = styled.div`
 `
 
 class CoinGrid extends Component {
+  getLowerSectionCoins(coins, filteredCoins) {
+    if (filteredCoins && Object.keys(filteredCoins)) {
+      return Object.keys(filteredCoins)
+    }
+
+    return Object.keys(coins).slice(0, 500) // The first five hundred coin keys
+  }
+
   render() {
     return (
       <Consumer>
-        {(value) => {
-          const { coins, favoriteCoins: favCoinKeys } = value
+        {value => {
+          const { coins, favoriteCoins: favCoinKeys, filteredCoins } = value
           const { topSection } = this.props
-          const allCoinKeys = Object.keys(coins).slice(0, 500) // The first five hundred coin keys
 
-          const coinKeyList = topSection ? favCoinKeys : allCoinKeys
+          const coinKeyList = topSection
+            ? favCoinKeys
+            : this.getLowerSectionCoins(coins, filteredCoins)
 
           return (
             <CoinGridStyled>
-              {coinKeyList.map((coinKey) => {
+              {coinKeyList.map(coinKey => {
                 const coin = coins[coinKey]
 
                 return (
