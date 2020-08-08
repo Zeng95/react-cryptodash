@@ -13,7 +13,7 @@ class CoinTileImage extends Component {
 
     return (
       <Consumer>
-        {(value) => {
+        {value => {
           const { coinBaseUrl } = value
           const { ImageUrl: imgUrl, Symbol: symbol } = this.props.coin
 

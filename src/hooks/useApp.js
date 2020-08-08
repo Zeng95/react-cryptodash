@@ -1,32 +1,53 @@
 import { useState, useEffect } from 'react'
+import cc from 'cryptocompare'
 
 function useApp(defaultPage) {
   const [firstVisit, setFirstVisit] = useState(false)
   const [page, setPage] = useState(defaultPage || 'dashboard')
+  const [prices, setPrices] = useState([])
 
-  // Will trigger the callback only after the first render
   useEffect(() => {
-    saveSettings()
-  }, [])
-
-  function saveSettings() {
-    let cryptoDashData = JSON.parse(localStorage.getItem('cryptoDash'))
+    // The JSON.parse() method parses a JSON string
+    const cryptoDashData = JSON.parse(localStorage.getItem('cryptoDash'))
 
     if (!cryptoDashData) {
-      setPage('settings')
-      setFirstVisit(true)
+      saveSettings()
+    } else if (!firstVisit) {
+      fetchPrices(cryptoDashData.favorites)
     }
+  }, [firstVisit])
+
+  async function fetchPrices(favorites) {
+    const priceList = []
+
+    for (let i = 0; i < favorites.length; i++) {
+      try {
+        const response = await cc.priceFull(favorites[i], 'USD')
+        priceList.push(response)
+      } catch (error) {
+        console.error(`Fetch price error: ${error}`)
+      }
+    }
+
+    console.log(priceList)
+    setPrices(priceList)
+  }
+
+  function saveSettings() {
+    setFirstVisit(true)
+    setPage('settings')
   }
 
   function confirmFavorites(favorites) {
-    setPage('dashboard')
     setFirstVisit(false)
+    setPage('dashboard')
 
     localStorage.setItem('cryptoDash', JSON.stringify({ favorites }))
   }
 
   return {
     page,
+    prices,
     firstVisit,
     setPage,
     saveSettings,

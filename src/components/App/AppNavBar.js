@@ -8,12 +8,10 @@ const AppNavBarStyled = styled.header`
   grid-template-columns: 180px auto 100px 100px;
   margin-bottom: 40px;
 `
-
 const Logo = styled.h1`
   margin: 0;
   font-size: 1.5em;
 `
-
 const ControlButtonElem = styled.button`
   cursor: pointer;
   border: none;
@@ -21,7 +19,7 @@ const ControlButtonElem = styled.button`
   background-color: transparent;
   color: white;
 
-  ${(props) =>
+  ${props =>
     props.active &&
     css`
       text-shadow: 0px 0px 20px #03ff03;
@@ -44,8 +42,7 @@ class ControlButton extends Component {
 
     return (
       <Consumer>
-        {(value) => {
-          const { page, setPage } = value
+        {({ page, setPage }) => {
           const { name } = this.props
 
           return (

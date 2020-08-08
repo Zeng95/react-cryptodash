@@ -4,7 +4,7 @@ import { AppContextProvider } from '../../context/AppContext'
 import { SettingsContextProvider } from '../../context/SettingsContext'
 
 import AppLayout from './AppLayout'
-import AppNavBar from './AppNavBar'
+import AppNavbar from './AppNavbar'
 import Settings from '../Settings'
 import Content from '../Shared/Content'
 
@@ -14,7 +14,7 @@ class App extends Component {
       <AppLayout>
         <AppContextProvider>
           <SettingsContextProvider>
-            <AppNavBar />
+            <AppNavbar />
 
             <Content>
               <Settings />
