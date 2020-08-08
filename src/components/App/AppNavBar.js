@@ -5,7 +5,7 @@ import { AppContext } from '../../context/AppContext'
 
 const AppNavBarStyled = styled.header`
   display: grid;
-  grid-template-columns: 180px auto 100px 100px;
+  grid-template-columns: 180px auto 100px 100px 100px;
   margin-bottom: 40px;
 `
 const Logo = styled.h1`
@@ -29,6 +29,7 @@ const ControlButtonElem = styled.button`
     outline: none;
   }
 `
+const LanguageButton = styled(ControlButtonElem)``
 
 // Extend another class
 class ControlButton extends Component {
@@ -67,6 +68,7 @@ class AppNavBar extends Component {
         <div className="text-transparent">Space Remaining</div>
         <ControlButton name="dashboard" active />
         <ControlButton name="settings" />
+        <LanguageButton>Chinese</LanguageButton>
       </AppNavBarStyled>
     )
   }
