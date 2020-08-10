@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 import { AppContext } from '../../context/AppContext'
 
 class Welcome extends Component {
@@ -8,7 +7,7 @@ class Welcome extends Component {
 
     return (
       <Consumer>
-        {(value) => {
+        {value => {
           const { firstVisit } = value
 
           return firstVisit ? (

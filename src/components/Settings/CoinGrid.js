@@ -17,7 +17,7 @@ class CoinGrid extends Component {
       return Object.keys(filteredCoins)
     }
 
-    return Object.keys(coins).slice(0, 100) // The first five hundred coin keys
+    return Object.keys(coins).slice(0, 200) // The first five hundred coin keys
   }
 
   render() {

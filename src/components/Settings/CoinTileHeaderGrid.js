@@ -1,7 +1,6 @@
+import { Delete } from '@styled-icons/material/Delete'
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { Delete } from '@styled-icons/material/Delete'
-
 import { DeletableTile } from '../Shared/Tile'
 
 const CoinTileHeaderGridStyled = styled.header`

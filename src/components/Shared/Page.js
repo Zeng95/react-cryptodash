@@ -7,8 +7,7 @@ class Page extends Component {
   render() {
     return (
       <Consumer>
-        {(value) => {
-          const { page } = value
+        {({ page }) => {
           const { name, children } = this.props
 
           if (page === name) {

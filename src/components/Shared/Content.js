@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-
-import { SettingsContext } from '../../context/SettingsContext'
 import { AppContext } from '../../context/AppContext'
+import { SettingsContext } from '../../context/SettingsContext'
 
 class Content extends Component {
   render() {
@@ -14,7 +13,7 @@ class Content extends Component {
                 if (!coins) {
                   return <div>Loading Coins</div>
                 }
-                console.log(firstVisit, prices)
+
                 if (!firstVisit && prices.length === 0) {
                   return <div>Loading Prices</div>
                 }
