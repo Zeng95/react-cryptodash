@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import cc from 'cryptocompare'
+import { isEmpty } from 'utils'
 
 function useApp(defaultPage) {
   const [firstVisit, setFirstVisit] = useState(false)
@@ -12,10 +13,10 @@ function useApp(defaultPage) {
 
     if (!cryptoDashData) {
       saveSettings()
-    } else if (!firstVisit) {
+    } else if (!firstVisit && page === 'dashboard') {
       fetchPrices(cryptoDashData.favorites)
     }
-  }, [firstVisit])
+  }, [firstVisit, page])
 
   async function fetchPrices(favorites) {
     const priceList = []
@@ -29,8 +30,9 @@ function useApp(defaultPage) {
       }
     }
 
-    console.log(priceList)
-    setPrices(priceList)
+    const results = priceList.filter(item => !isEmpty(item))
+    console.log(results)
+    setPrices(results)
   }
 
   function saveSettings() {
@@ -39,10 +41,10 @@ function useApp(defaultPage) {
   }
 
   function confirmFavorites(favorites) {
+    localStorage.setItem('cryptoDash', JSON.stringify({ favorites }))
+
     setFirstVisit(false)
     setPage('dashboard')
-
-    localStorage.setItem('cryptoDash', JSON.stringify({ favorites }))
   }
 
   return {

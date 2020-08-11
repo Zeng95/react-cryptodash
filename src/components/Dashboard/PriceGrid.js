@@ -1,8 +1,33 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
+import { AppContext } from 'context/AppContext'
+import PriceTile from './PriceTile'
+
+const { Consumer } = AppContext
+const PriceGirdStyled = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+`
 
 class PriceGird extends Component {
   render() {
-    return <div>Hello</div>
+    return (
+      <Consumer>
+        {({ prices }) => (
+          <PriceGirdStyled>
+            {prices.map((price, index) => (
+              <PriceTile
+                key={Object.keys(price)[0]}
+                price={price}
+                index={index}
+              />
+            ))}
+          </PriceGirdStyled>
+        )}
+      </Consumer>
+    )
   }
 }
 
