@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { AppContext } from 'context/AppContext'
-import PriceTile from './PriceTile'
+import TileClass from './PriceTile'
 
 const { Consumer } = AppContext
 const PriceGirdStyled = styled.div`
@@ -18,7 +18,7 @@ class PriceGird extends Component {
         {({ prices }) => (
           <PriceGirdStyled>
             {prices.map((price, index) => (
-              <PriceTile
+              <TileClass
                 key={Object.keys(price)[0]}
                 price={price}
                 index={index}
