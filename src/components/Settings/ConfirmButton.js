@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { AppContext } from '../../context/AppContext'
-import { SettingsContext } from '../../context/SettingsContext'
-import { color3, fontSize1, greenBoxShadow } from '../Shared/Styles'
+import { AppContext } from 'context/AppContext'
+import { SettingsContext } from 'context/SettingsContext'
+import { color3, fontSize1, greenBoxShadow } from 'components/Shared/Styles'
 
 const CenterDiv = styled.div`
   display: flex;
@@ -33,7 +33,7 @@ class ConfirmButton extends Component {
 
     return (
       <AppContextConsumer>
-        {(value) => (
+        {value => (
           <SettingsContextConsumer>
             {({ favoriteCoins: favCoinKeys }) => {
               const { confirmFavorites } = value

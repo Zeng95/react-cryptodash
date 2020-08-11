@@ -3,15 +3,15 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { DeletableTile } from '../Shared/Tile'
 
-const CoinTileHeaderGridStyled = styled.header`
+export const CoinTileHeaderGridStyled = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
 `
+export const CoinSymbol = styled.span`
+  justify-self: right;
+`
 const CoinName = styled.span`
   font-style: italic;
-`
-const CoinSymbol = styled.div`
-  justify-self: right;
 `
 const CoinDeleteIcon = styled.div`
   display: none;
@@ -26,18 +26,17 @@ const CoinDeleteIcon = styled.div`
 class CoinTileHeaderGrid extends Component {
   render() {
     const { coin, topSection } = this.props
-    const { CoinName: name, Symbol: symbol } = coin
 
     return (
       <CoinTileHeaderGridStyled>
-        <CoinName>{name}</CoinName>
+        <CoinName>{coin.CoinName}</CoinName>
 
         {topSection ? (
           <CoinDeleteIcon>
             <Delete size="16" title="Delete coin" />
           </CoinDeleteIcon>
         ) : (
-          <CoinSymbol>{symbol}</CoinSymbol>
+          <CoinSymbol>{coin.Symbol}</CoinSymbol>
         )}
       </CoinTileHeaderGridStyled>
     )

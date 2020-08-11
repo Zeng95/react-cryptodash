@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { SettingsContext } from '../../context/SettingsContext'
-import CoinTileImage from '../Shared/CoinTileImage'
+import { SettingsContext } from 'context/SettingsContext'
+import CoinTileImage from 'components/Shared/CoinTileImage'
 import { DeletableTile, DisabledTile, SelectableTile } from '../Shared/Tile'
 import CoinTileHeaderGrid from './CoinTileHeaderGrid'
 
@@ -16,7 +16,7 @@ class CoinTile extends Component {
   render() {
     return (
       <Consumer>
-        {(value) => {
+        {value => {
           const { addCoin, removeCoin, isInFavoriteCoins } = value
           const { coin, topSection } = this.props
 

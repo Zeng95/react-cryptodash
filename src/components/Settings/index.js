@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Page from '../Shared/Page'
+import Page from 'components/Shared/Page'
 import CoinGrid from './CoinGrid'
 import ConfirmButton from './ConfirmButton'
 import Search from './Search'

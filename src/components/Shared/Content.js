@@ -11,11 +11,11 @@ class Content extends Component {
             <SettingsContext.Consumer>
               {({ coins }) => {
                 if (!coins) {
-                  return <div>Loading Coins</div>
+                  return <div>Loading Coins...</div>
                 }
 
                 if (!firstVisit && prices.length === 0) {
-                  return <div>Loading Prices</div>
+                  return <div>Loading Prices...</div>
                 }
 
                 return this.props.children

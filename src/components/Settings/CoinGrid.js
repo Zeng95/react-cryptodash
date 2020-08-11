@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { SettingsContext } from '../../context/SettingsContext'
+import { SettingsContext } from 'context/SettingsContext'
 import CoinTile from './CoinTile'
 
 const { Consumer } = SettingsContext
@@ -15,9 +15,9 @@ class CoinGrid extends Component {
   getLowerSectionCoins(coins, filteredCoins) {
     if (filteredCoins && Object.keys(filteredCoins)) {
       return Object.keys(filteredCoins)
+    } else {
+      return Object.keys(coins).slice(0, 300) // The first five hundred coin keys
     }
-
-    return Object.keys(coins).slice(0, 200) // The first five hundred coin keys
   }
 
   render() {
@@ -27,19 +27,19 @@ class CoinGrid extends Component {
           const { coins, favoriteCoins: favCoinKeys, filteredCoins } = value
           const { topSection } = this.props
 
-          const coinKeyList = topSection
+          const coinKeys = topSection
             ? favCoinKeys
             : this.getLowerSectionCoins(coins, filteredCoins)
 
           return (
             <CoinGridStyled>
-              {coinKeyList.map(coinKey => {
-                const coin = coins[coinKey]
-
-                return (
-                  <CoinTile key={coinKey} coin={coin} topSection={topSection} />
-                )
-              })}
+              {coinKeys.map(coinKey => (
+                <CoinTile
+                  key={coinKey}
+                  coin={coins[coinKey]}
+                  topSection={topSection}
+                />
+              ))}
             </CoinGridStyled>
           )
         }}

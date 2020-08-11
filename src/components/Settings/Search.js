@@ -1,9 +1,9 @@
+import { darkBlueBackground, fontSize2 } from 'components/Shared/Styles'
+import { SettingsContext } from 'context/SettingsContext'
+import fuzzy from 'fuzzy'
+import _ from 'lodash'
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import _ from 'lodash'
-import fuzzy from 'fuzzy'
-import { SettingsContext } from '../../context/SettingsContext'
-import { darkBlueBackground, fontSize2 } from '../Shared/Styles'
 
 const { Consumer } = SettingsContext
 const SearchGrid = styled.div`
