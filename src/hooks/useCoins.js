@@ -9,19 +9,24 @@ const MAX_FAVORITES = 10
 function useCoins() {
   const [coins, setCoins] = useState()
   const [coinBaseUrl, setCoinBaseUrl] = useState()
+  const [filteredCoins, setFilteredCoins] = useState()
   const [favoriteCoins, setFavoriteCoins] = useState([
     'BTC',
     'ETH',
     'XMR',
     'DOGE'
   ])
-  const [filteredCoins, setFilteredCoins] = useState()
+  const [currentFavCoin, setCurrentFavCoin] = useState()
 
   // Will trigger the callback only after the first render
   useEffect(() => {
     saveSettings()
     fetchCoins()
   }, [])
+
+  useEffect(() => {
+    setCurrentFavCoin(favoriteCoins[0])
+  }, [favoriteCoins])
 
   async function fetchCoins() {
     try {
@@ -39,6 +44,7 @@ function useCoins() {
 
     if (cryptoDashData) {
       const { favorites } = cryptoDashData
+
       setFavoriteCoins(favorites)
     }
   }
@@ -63,15 +69,21 @@ function useCoins() {
     return favoriteCoins.includes(coinKey)
   }
 
+  function setCurrentFavorite(symbol) {
+    setCurrentFavCoin()
+  }
+
   return {
     coins,
     coinBaseUrl,
     favoriteCoins,
     filteredCoins,
+    currentFavCoin,
     addCoin,
     removeCoin,
     isInFavoriteCoins,
-    setFilteredCoins
+    setFilteredCoins,
+    setCurrentFavorite
   }
 }
 

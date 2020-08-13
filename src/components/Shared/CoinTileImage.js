@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { SettingsContext } from '../../context/SettingsContext'
+import { SettingsContext } from 'context/SettingsContext'
 
 const ImageStyled = styled.img`
   height: 50px;

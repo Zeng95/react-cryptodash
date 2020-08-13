@@ -1,7 +1,7 @@
+import { AppContext } from 'context/AppContext'
+import { SettingsContext } from 'context/SettingsContext'
 import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
-
-import { AppContext } from '../../context/AppContext'
 
 const AppNavBarStyled = styled.header`
   display: grid;
@@ -38,24 +38,42 @@ class ControlButton extends Component {
     return str.charAt(0).toUpperCase() + str.substring(1).toLowerCase()
   }
 
+  handleClick(name, setPage, favoriteCoins, confirmFavorites) {
+    console.log('click')
+    if (name === 'dashboard') {
+      confirmFavorites(favoriteCoins)
+    }
+
+    setPage(name)
+  }
+
   render() {
-    const { Consumer } = AppContext
-
     return (
-      <Consumer>
-        {({ page, setPage }) => {
-          const { name } = this.props
+      <AppContext.Consumer>
+        {({ page, setPage, confirmFavorites }) => (
+          <SettingsContext.Consumer>
+            {({ favoriteCoins }) => {
+              const { name } = this.props
 
-          return (
-            <ControlButtonElem
-              active={page === name}
-              onClick={() => setPage(name)}
-            >
-              {this.capitalize(name)}
-            </ControlButtonElem>
-          )
-        }}
-      </Consumer>
+              return (
+                <ControlButtonElem
+                  active={page === name}
+                  onClick={() => {
+                    this.handleClick(
+                      name,
+                      setPage,
+                      favoriteCoins,
+                      confirmFavorites
+                    )
+                  }}
+                >
+                  {this.capitalize(name)}
+                </ControlButtonElem>
+              )
+            }}
+          </SettingsContext.Consumer>
+        )}
+      </AppContext.Consumer>
     )
   }
 }

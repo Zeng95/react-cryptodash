@@ -41,7 +41,10 @@ function useApp(defaultPage) {
   }
 
   function confirmFavorites(favorites) {
-    localStorage.setItem('cryptoDash', JSON.stringify({ favorites }))
+    localStorage.setItem(
+      'cryptoDash',
+      JSON.stringify({ favorites, currentFavCoin: favorites[0] })
+    )
 
     setFirstVisit(false)
     setPage('dashboard')

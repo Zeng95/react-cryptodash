@@ -1,13 +1,19 @@
 import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
 import { SelectableTile } from 'components/Shared/Tile'
-import { fontSizeBig, fontSize3 } from 'components/Shared/Styles.js'
+import {
+  fontSizeBig,
+  fontSize3,
+  greenBoxShadow
+} from 'components/Shared/Styles.js'
 import { formatNumber } from 'utils'
 import {
   CoinSymbol,
   CoinTileHeaderGridStyled
 } from 'components/Settings/CoinTileHeaderGrid'
+import { SettingsContext } from 'context/SettingsContext'
 
+const { Consumer } = SettingsContext
 const PriceTileStyled = styled(SelectableTile)`
   ${props =>
     props.compact &&
@@ -17,6 +23,13 @@ const PriceTileStyled = styled(SelectableTile)`
       justify-items: right;
       grid-template-columns: repeat(3, 1fr);
       ${fontSize3}
+    `}
+
+  ${props =>
+    props.currentFavCoin &&
+    css`
+      pointer-events: none;
+      ${greenBoxShadow}
     `}
 `
 const JustifyLeft = styled.span`
@@ -37,10 +50,10 @@ const TickerPrice = styled.div`
 
 class PriceTileCompact extends Component {
   render() {
-    const { symbol, data } = this.props
+    const { symbol, data, currentFavCoin } = this.props
 
     return (
-      <PriceTileStyled compact>
+      <PriceTileStyled compact currentFavCoin={currentFavCoin}>
         <JustifyLeft>{symbol}</JustifyLeft>
 
         <ChangePercent red={data.CHANGEPCT24HOUR < 0}>
@@ -55,10 +68,10 @@ class PriceTileCompact extends Component {
 
 class PriceTile extends Component {
   render() {
-    const { symbol, data } = this.props
+    const { symbol, data, currentFavCoin } = this.props
 
     return (
-      <PriceTileStyled>
+      <PriceTileStyled currentFavCoin={currentFavCoin}>
         <CoinTileHeaderGridStyled>
           <span>{symbol}</span>
 
@@ -75,14 +88,28 @@ class PriceTile extends Component {
 
 class TileClass extends Component {
   render() {
-    const { price, index } = this.props
-    const symbol = Object.keys(price)[0]
-    const data = price[symbol].USD
+    return (
+      <Consumer>
+        {({ currentFavCoin }) => {
+          const { price, index } = this.props
+          const symbol = Object.keys(price)[0]
+          const data = price[symbol].USD
 
-    return index >= 5 ? (
-      <PriceTileCompact symbol={symbol} data={data} />
-    ) : (
-      <PriceTile symbol={symbol} data={data} />
+          return index >= 5 ? (
+            <PriceTileCompact
+              data={data}
+              symbol={symbol}
+              currentFavCoin={currentFavCoin === symbol}
+            />
+          ) : (
+            <PriceTile
+              data={data}
+              symbol={symbol}
+              currentFavCoin={currentFavCoin === symbol}
+            />
+          )
+        }}
+      </Consumer>
     )
   }
 }

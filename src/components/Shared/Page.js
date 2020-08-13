@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AppContext } from '../../context/AppContext'
+import { AppContext } from 'context/AppContext'
 
 const { Consumer } = AppContext
 
