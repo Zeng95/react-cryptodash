@@ -39,7 +39,6 @@ class ControlButton extends Component {
   }
 
   handleClick(name, setPage, favoriteCoins, confirmFavorites) {
-    console.log('click')
     if (name === 'dashboard') {
       confirmFavorites(favoriteCoins)
     }

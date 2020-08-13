@@ -24,10 +24,6 @@ function useCoins() {
     fetchCoins()
   }, [])
 
-  useEffect(() => {
-    setCurrentFavCoin(favoriteCoins[0])
-  }, [favoriteCoins])
-
   async function fetchCoins() {
     try {
       const { Data, BaseImageUrl } = await cc.coinList()
@@ -43,9 +39,8 @@ function useCoins() {
     let cryptoDashData = JSON.parse(localStorage.getItem('cryptoDash'))
 
     if (cryptoDashData) {
-      const { favorites } = cryptoDashData
-
-      setFavoriteCoins(favorites)
+      setFavoriteCoins(cryptoDashData.favorites)
+      setCurrentFavCoin(cryptoDashData.currentFavCoin)
     }
   }
 
@@ -70,7 +65,16 @@ function useCoins() {
   }
 
   function setCurrentFavorite(symbol) {
-    setCurrentFavCoin()
+    setCurrentFavCoin(symbol)
+
+    // cryptoDashData is an object
+    const cryptoDashData = JSON.parse(localStorage.getItem('cryptoDash'))
+
+    localStorage.setItem(
+      'cryptoDash',
+      // 提取 cryptoDashData 所有值，然后合并新的值
+      JSON.stringify({ ...cryptoDashData, currentFavCoin: symbol })
+    )
   }
 
   return {
@@ -81,8 +85,8 @@ function useCoins() {
     currentFavCoin,
     addCoin,
     removeCoin,
-    isInFavoriteCoins,
     setFilteredCoins,
+    isInFavoriteCoins,
     setCurrentFavorite
   }
 }

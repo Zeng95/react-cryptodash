@@ -1,19 +1,20 @@
-import React, { Component } from 'react'
-import styled, { css } from 'styled-components'
-import { SelectableTile } from 'components/Shared/Tile'
-import {
-  fontSizeBig,
-  fontSize3,
-  greenBoxShadow
-} from 'components/Shared/Styles.js'
-import { formatNumber } from 'utils'
 import {
   CoinSymbol,
   CoinTileHeaderGridStyled
 } from 'components/Settings/CoinTileHeaderGrid'
+import {
+  fontSize3,
+  fontSizeBig,
+  greenBoxShadow
+} from 'components/Shared/Styles.js'
+import { SelectableTile } from 'components/Shared/Tile'
 import { SettingsContext } from 'context/SettingsContext'
+import React, { Component } from 'react'
+import styled, { css } from 'styled-components'
+import { formatNumber } from 'utils'
 
 const { Consumer } = SettingsContext
+// pointer-events is going to disbale on the current favorite coin
 const PriceTileStyled = styled(SelectableTile)`
   ${props =>
     props.compact &&
@@ -50,10 +51,16 @@ const TickerPrice = styled.div`
 
 class PriceTileCompact extends Component {
   render() {
-    const { symbol, data, currentFavCoin } = this.props
+    const { symbol, data, currentFavCoin, setCurrentFavorite } = this.props
 
     return (
-      <PriceTileStyled compact currentFavCoin={currentFavCoin}>
+      <PriceTileStyled
+        compact
+        currentFavCoin={currentFavCoin}
+        onClick={() => {
+          setCurrentFavorite(symbol)
+        }}
+      >
         <JustifyLeft>{symbol}</JustifyLeft>
 
         <ChangePercent red={data.CHANGEPCT24HOUR < 0}>
@@ -68,10 +75,15 @@ class PriceTileCompact extends Component {
 
 class PriceTile extends Component {
   render() {
-    const { symbol, data, currentFavCoin } = this.props
+    const { symbol, data, currentFavCoin, setCurrentFavorite } = this.props
 
     return (
-      <PriceTileStyled currentFavCoin={currentFavCoin}>
+      <PriceTileStyled
+        currentFavCoin={currentFavCoin}
+        onClick={() => {
+          setCurrentFavorite(symbol)
+        }}
+      >
         <CoinTileHeaderGridStyled>
           <span>{symbol}</span>
 
@@ -90,7 +102,7 @@ class TileClass extends Component {
   render() {
     return (
       <Consumer>
-        {({ currentFavCoin }) => {
+        {({ currentFavCoin, setCurrentFavorite }) => {
           const { price, index } = this.props
           const symbol = Object.keys(price)[0]
           const data = price[symbol].USD
@@ -100,12 +112,14 @@ class TileClass extends Component {
               data={data}
               symbol={symbol}
               currentFavCoin={currentFavCoin === symbol}
+              setCurrentFavorite={setCurrentFavorite}
             />
           ) : (
             <PriceTile
               data={data}
               symbol={symbol}
               currentFavCoin={currentFavCoin === symbol}
+              setCurrentFavorite={setCurrentFavorite}
             />
           )
         }}
