@@ -16,7 +16,7 @@ function useCoins() {
     'XMR',
     'DOGE'
   ])
-  const [currentFavCoin, setCurrentFavCoin] = useState()
+  const [currentFavCoin, setCurrentFavCoin] = useState(favoriteCoins[0])
 
   // Will trigger the callback only after the first render
   useEffect(() => {

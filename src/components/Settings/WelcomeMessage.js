@@ -1,5 +1,12 @@
-import React, { Component } from 'react'
 import { AppContext } from 'context/AppContext'
+import React, { Component } from 'react'
+import styled from 'styled-components'
+
+const WelcomeStyled = styled.h1`
+  margin: 0;
+  font-weight: normal;
+  font-size: 16px;
+`
 
 class Welcome extends Component {
   render() {
@@ -7,13 +14,11 @@ class Welcome extends Component {
 
     return (
       <Consumer>
-        {value => {
-          const { firstVisit } = value
-
+        {({ firstVisit }) => {
           return firstVisit ? (
-            <div>
+            <WelcomeStyled>
               Welcome to CryptoDash, please select your favorite coins to begin.
-            </div>
+            </WelcomeStyled>
           ) : null
         }}
       </Consumer>
