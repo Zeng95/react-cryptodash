@@ -1,15 +1,11 @@
 export default {
   title: {
-    text: 'Solar Employment Growth by Sector, 2010-2016'
-  },
-
-  subtitle: {
-    text: 'Source: thesolarfoundation.com'
+    text: ''
   },
 
   yAxis: {
     title: {
-      text: 'Number of Employees'
+      text: 'Prices'
     }
   },
 
