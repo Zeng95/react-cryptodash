@@ -1,5 +1,5 @@
 export function isEmpty(obj) {
-  // Object.keys will return an Array, which contains the property names of the object.
+  // Object.keys will return an Array, which contains the property name of the object.
   // If the length of the array is 0, then we know that the object is empty.
   return Object.keys(obj).length === 0
 }

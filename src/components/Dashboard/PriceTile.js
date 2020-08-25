@@ -49,6 +49,31 @@ const TickerPrice = styled.div`
   ${fontSizeBig}
 `
 
+class PriceTile extends Component {
+  render() {
+    const { symbol, data, currentFavCoin, setCurrentFavorite } = this.props
+
+    return (
+      <PriceTileStyled
+        currentFavCoin={currentFavCoin}
+        onClick={() => {
+          setCurrentFavorite(symbol)
+        }}
+      >
+        <CoinTileHeaderGridStyled>
+          <span>{symbol}</span>
+
+          <ChangePercent red={data.CHANGEPCT24HOUR < 0}>
+            {formatNumber(data.CHANGEPCT24HOUR)}%
+          </ChangePercent>
+        </CoinTileHeaderGridStyled>
+
+        <TickerPrice>{formatNumber(data.PRICE)}</TickerPrice>
+      </PriceTileStyled>
+    )
+  }
+}
+
 class PriceTileCompact extends Component {
   render() {
     const { symbol, data, currentFavCoin, setCurrentFavorite } = this.props
@@ -68,31 +93,6 @@ class PriceTileCompact extends Component {
         </ChangePercent>
 
         <div>{formatNumber(data.PRICE)}</div>
-      </PriceTileStyled>
-    )
-  }
-}
-
-class PriceTile extends Component {
-  render() {
-    const { symbol, data, currentFavCoin, setCurrentFavorite } = this.props
-
-    return (
-      <PriceTileStyled
-        currentFavCoin={currentFavCoin}
-        onClick={() => {
-          setCurrentFavorite(symbol)
-        }}
-      >
-        <CoinTileHeaderGridStyled>
-          <span>{symbol}</span>
-
-          <ChangePercent red={data.CHANGEPCT24HOUR < 0}>
-            {formatNumber(data.CHANGEPCT24HOUR)}
-          </ChangePercent>
-        </CoinTileHeaderGridStyled>
-
-        <TickerPrice>{formatNumber(data.PRICE)}</TickerPrice>
       </PriceTileStyled>
     )
   }

@@ -1,17 +1,5 @@
 export default {
-  colors: [
-    '#DDDF0D',
-    '#55BF3B',
-    '#DF5353',
-    '#7798BF',
-    '#aaeeee',
-    '#ff0066',
-    '#eeaaee',
-    '#55BF3B',
-    '#DF5353',
-    '#7798BF',
-    '#aaeeee'
-  ],
+  colors: ['#61d936'],
 
   chart: {
     backgroundColor: '#061a44',

@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
 import { AppContext } from 'context/AppContext'
 import { SettingsContext } from 'context/SettingsContext'
+import React, { Component } from 'react'
 
 class Content extends Component {
   render() {

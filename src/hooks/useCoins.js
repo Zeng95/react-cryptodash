@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react'
 import cc from 'cryptocompare'
 import _ from 'lodash'
+import { useEffect, useState } from 'react'
 
-cc.setApiKey('ab4c13e647046a6f66904bc40fc89e06f6309fbfae3299654fce359eaf895548')
-
+const API_KEY = process.env.REACT_APP_CRYPTOCOMPARE_API_KEY
 const MAX_FAVORITES = 10
+
+cc.setApiKey(API_KEY)
 
 function useCoins() {
   const [coins, setCoins] = useState()
@@ -31,7 +32,7 @@ function useCoins() {
       setCoins(Data)
       setCoinBaseUrl(BaseImageUrl)
     } catch (error) {
-      console.error(error)
+      console.error(`Fetch coins error: ${error}`)
     }
   }
 

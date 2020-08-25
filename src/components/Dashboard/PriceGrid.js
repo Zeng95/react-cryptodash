@@ -1,6 +1,6 @@
+import { AppContext } from 'context/AppContext'
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { AppContext } from 'context/AppContext'
 import TileClass from './PriceTile'
 
 const { Consumer } = AppContext

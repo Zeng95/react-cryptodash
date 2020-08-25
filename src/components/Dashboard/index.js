@@ -1,9 +1,9 @@
+import Page from 'components/Shared/Page'
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import Page from 'components/Shared/Page'
-import PriceGrid from './PriceGrid'
 import CoinSpotlight from './CoinSpotlight'
 import PriceChart from './PriceChart'
+import PriceGrid from './PriceGrid'
 
 const ChartGrid = styled.div`
   display: grid;
