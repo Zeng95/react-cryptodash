@@ -1,28 +1,29 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Tile } from 'components/Shared/Tile'
-import CoinTileImage from 'components/Shared/CoinTileImage'
 import { SettingsContext } from 'context/SettingsContext'
 
-const { Consumer } = SettingsContext
 const SpotlightTile = styled(Tile)`
   text-align: center;
 `
 const SpotlightName = styled.h2``
+const SpotlightImage = styled.img``
 
 class CoinSpotlight extends Component {
   render() {
     return (
-      <Consumer>
-        {({ coins, currentFavCoin }) => {
+      <SettingsContext.Consumer>
+        {({ coins, currentFavCoin, coinBaseUrl }) => {
+          const { ImageUrl: imgUrl, Symbol: symbol } = coins[currentFavCoin]
+
           return (
             <SpotlightTile>
               <SpotlightName>{coins[currentFavCoin].CoinName}</SpotlightName>
-              <CoinTileImage coin={coins[currentFavCoin]} spotlight />
+              <SpotlightImage src={`${coinBaseUrl}${imgUrl}`} alt={symbol} />
             </SpotlightTile>
           )
         }}
-      </Consumer>
+      </SettingsContext.Consumer>
     )
   }
 }

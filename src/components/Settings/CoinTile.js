@@ -1,8 +1,12 @@
-import React, { Component } from 'react'
+import {
+  DeletableTile,
+  DisabledTile,
+  SelectableTile
+} from 'components/Shared/Tile'
 import { SettingsContext } from 'context/SettingsContext'
-import CoinTileImage from 'components/Shared/CoinTileImage'
-import { DeletableTile, DisabledTile, SelectableTile } from '../Shared/Tile'
+import React, { Component } from 'react'
 import CoinTileHeaderGrid from './CoinTileHeaderGrid'
+import CoinTileImage from './CoinTileImage'
 
 const { Consumer } = SettingsContext
 
