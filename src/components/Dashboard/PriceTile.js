@@ -89,7 +89,7 @@ class PriceTileCompact extends Component {
         <JustifyLeft>{symbol}</JustifyLeft>
 
         <ChangePercent red={data.CHANGEPCT24HOUR < 0}>
-          {formatNumber(data.CHANGEPCT24HOUR)}
+          {formatNumber(data.CHANGEPCT24HOUR)}%
         </ChangePercent>
 
         <div>{formatNumber(data.PRICE)}</div>
