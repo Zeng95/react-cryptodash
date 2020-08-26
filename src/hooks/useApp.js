@@ -9,6 +9,7 @@ function useApp(defaultPage) {
   const [page, setPage] = useState(defaultPage || 'dashboard')
   const [firstVisit, setFirstVisit] = useState(false)
   const [prices, setPrices] = useState([])
+  const [historicalPrices, setHistoricalPrices] = useState([])
 
   useEffect(() => {
     // The JSON.parse() method parses a JSON string
@@ -36,33 +37,43 @@ function useApp(defaultPage) {
     }
 
     const results = priceList.filter(item => !isEmpty(item))
+
     setPrices(results)
   }
 
   async function fetchHistorical(currentFav) {
+    setHistoricalPrices([])
+
     const priceList = []
 
-    for (let index = TIME_UNITS; index >= 1; index--) {
+    for (let time = TIME_UNITS; time >= 1; time--) {
       try {
         const price = await cc.priceHistorical(
           currentFav,
           'USD',
-          moment().subtract(index, 'month').toDate() // subtract means 减
+          moment().subtract(time, 'months').toDate() // Put it into a JavaScript date
         )
         priceList.push(price)
       } catch (error) {
         console.error(`Fetch price error: ${error}`)
       }
     }
-    console.log(priceList)
-    // const historical = [
-    //   {
-    //     name: currentFav,
-    //     data: priceList.map((price, index) => {})
-    //   }
-    // ]
 
-    // return historical
+    const historical = [
+      {
+        name: currentFav,
+        data: priceList.map((ticker, index) => {
+          return [
+            moment()
+              .subtract(TIME_UNITS - index, 'months')
+              .valueOf(),
+            ticker.USD
+          ]
+        })
+      }
+    ]
+
+    setHistoricalPrices(historical)
   }
 
   function saveSettings() {
@@ -83,10 +94,12 @@ function useApp(defaultPage) {
   return {
     page,
     prices,
+    historicalPrices,
     firstVisit,
     setPage,
     saveSettings,
-    confirmFavorites
+    confirmFavorites,
+    fetchHistorical
   }
 }
 

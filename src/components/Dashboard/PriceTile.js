@@ -8,12 +8,12 @@ import {
   greenBoxShadow
 } from 'components/Shared/Styles.js'
 import { SelectableTile } from 'components/Shared/Tile'
+import { AppContext } from 'context/AppContext'
 import { SettingsContext } from 'context/SettingsContext'
 import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
 import { formatNumber } from 'utils'
 
-const { Consumer } = SettingsContext
 // pointer-events is going to disbale on the current favorite coin
 const PriceTileStyled = styled(SelectableTile)`
   ${props =>
@@ -51,13 +51,20 @@ const TickerPrice = styled.div`
 
 class PriceTile extends Component {
   render() {
-    const { symbol, data, currentFavCoin, setCurrentFavorite } = this.props
+    const {
+      symbol,
+      data,
+      currentFavCoin,
+      setCurrentFavorite,
+      fetchHistorical
+    } = this.props
 
     return (
       <PriceTileStyled
         currentFavCoin={currentFavCoin}
         onClick={() => {
           setCurrentFavorite(symbol)
+          fetchHistorical(symbol)
         }}
       >
         <CoinTileHeaderGridStyled>
@@ -76,7 +83,13 @@ class PriceTile extends Component {
 
 class PriceTileCompact extends Component {
   render() {
-    const { symbol, data, currentFavCoin, setCurrentFavorite } = this.props
+    const {
+      symbol,
+      data,
+      currentFavCoin,
+      setCurrentFavorite,
+      fetchHistorical
+    } = this.props
 
     return (
       <PriceTileStyled
@@ -84,6 +97,7 @@ class PriceTileCompact extends Component {
         currentFavCoin={currentFavCoin}
         onClick={() => {
           setCurrentFavorite(symbol)
+          fetchHistorical(symbol)
         }}
       >
         <JustifyLeft>{symbol}</JustifyLeft>
@@ -100,30 +114,39 @@ class PriceTileCompact extends Component {
 
 class TileClass extends Component {
   render() {
-    return (
-      <Consumer>
-        {({ currentFavCoin, setCurrentFavorite }) => {
-          const { price, index } = this.props
-          const symbol = Object.keys(price)[0]
-          const data = price[symbol].USD
+    const { Consumer: AppContextConsumer } = AppContext
+    const { Consumer: SettingsContextConsumer } = SettingsContext
 
-          return index >= 5 ? (
-            <PriceTileCompact
-              data={data}
-              symbol={symbol}
-              currentFavCoin={currentFavCoin === symbol}
-              setCurrentFavorite={setCurrentFavorite}
-            />
-          ) : (
-            <PriceTile
-              data={data}
-              symbol={symbol}
-              currentFavCoin={currentFavCoin === symbol}
-              setCurrentFavorite={setCurrentFavorite}
-            />
-          )
-        }}
-      </Consumer>
+    return (
+      <AppContextConsumer>
+        {({ fetchHistorical }) => (
+          <SettingsContextConsumer>
+            {({ currentFavCoin, setCurrentFavorite }) => {
+              const { price, index } = this.props
+              const symbol = Object.keys(price)[0]
+              const data = price[symbol].USD
+
+              return index >= 5 ? (
+                <PriceTileCompact
+                  data={data}
+                  symbol={symbol}
+                  currentFavCoin={currentFavCoin === symbol}
+                  setCurrentFavorite={setCurrentFavorite}
+                  fetchHistorical={fetchHistorical}
+                />
+              ) : (
+                <PriceTile
+                  data={data}
+                  symbol={symbol}
+                  currentFavCoin={currentFavCoin === symbol}
+                  setCurrentFavorite={setCurrentFavorite}
+                  fetchHistorical={fetchHistorical}
+                />
+              )
+            }}
+          </SettingsContextConsumer>
+        )}
+      </AppContextConsumer>
     )
   }
 }
