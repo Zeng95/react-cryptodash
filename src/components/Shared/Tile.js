@@ -7,6 +7,7 @@ import {
 } from './Styles'
 
 export const Tile = styled.div`
+  position: relative;
   padding: 10px;
   ${subtleBoxShadow}
   ${lightBlueBackground}

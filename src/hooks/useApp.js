@@ -10,6 +10,7 @@ function useApp(defaultPage) {
   const [firstVisit, setFirstVisit] = useState(false)
   const [prices, setPrices] = useState([])
   const [historicalPrices, setHistoricalPrices] = useState([])
+  const [timeInterval, setTimeInterval] = useState('months')
 
   useEffect(() => {
     // The JSON.parse() method parses a JSON string
@@ -91,15 +92,21 @@ function useApp(defaultPage) {
     setPage('dashboard')
   }
 
+  function handleChangeOnChartSelect(event) {
+    setTimeInterval(event.target.value)
+  }
+
   return {
     page,
     prices,
     historicalPrices,
     firstVisit,
+    timeInterval,
     setPage,
     saveSettings,
     confirmFavorites,
-    fetchHistorical
+    fetchHistorical,
+    handleChangeOnChartSelect
   }
 }
 
