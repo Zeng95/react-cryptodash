@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components'
 
 const AppNavBarStyled = styled.header`
   display: grid;
-  grid-template-columns: 180px auto 100px 100px 100px;
+  grid-template-columns: 180px auto 100px 100px 100px 100px;
   margin-bottom: 40px;
 `
 const Logo = styled.h1`
@@ -30,6 +30,11 @@ const ControlButtonElem = styled.button`
   }
 `
 const LanguageButton = styled(ControlButtonElem)``
+const ThemeButton = styled.select`
+  cursor: pointer;
+  background-color: transparent;
+  color: white;
+`
 
 // Extend another class
 class ControlButton extends Component {
@@ -86,6 +91,10 @@ class AppNavBar extends Component {
         <ControlButton name="dashboard" active />
         <ControlButton name="settings" />
         <LanguageButton>Chinese</LanguageButton>
+        <ThemeButton>
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
+        </ThemeButton>
       </AppNavBarStyled>
     )
   }

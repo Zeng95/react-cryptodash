@@ -8,4 +8,5 @@ export default styled.select`
   margin: 5px;
   color: #1163c9;
   border: 1px solid;
+  cursor: pointer;
 `

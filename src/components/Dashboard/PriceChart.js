@@ -8,6 +8,7 @@ import { AppContext } from 'context/AppContext'
 import ChartSelect from './ChartSelect'
 import { ReactComponent as Loading } from 'assets/hearts.svg'
 import styled from 'styled-components'
+import { color4 } from 'components/Shared/Styles.js'
 
 Highcharts.setOptions(HighchartsTheme)
 
@@ -47,7 +48,7 @@ class PriceChart extends Component {
             {historical.length === 0 ? (
               <LoadingContainer>
                 <LoadingText>Loading Historical Data...</LoadingText>
-                <Loading style={{ transform: 'scale(1.6)' }} />
+                <Loading style={{ transform: 'scale(1.6)', fill: color4 }} />
               </LoadingContainer>
             ) : (
               <HighchartsReact

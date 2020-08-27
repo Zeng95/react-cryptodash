@@ -1,12 +1,14 @@
+import { color } from 'components/Shared/Styles.js'
+
 export default {
   colors: ['#61d936'],
 
   chart: {
-    backgroundColor: '#061a44',
+    backgroundColor: color,
     borderColor: '#000000',
     borderWidth: 0,
     className: 'dark-container',
-    plotBackgroundColor: '#061a44',
+    plotBackgroundColor: color,
     plotBorderColor: '#cccccc',
     plotBorderWidth: 0
   },
