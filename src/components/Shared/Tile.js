@@ -11,6 +11,7 @@ export const Tile = styled.div`
   padding: 10px;
   ${subtleBoxShadow}
   ${lightBlueBackground}
+  transition: all 0.2s;
 `
 export const SelectableTile = styled(Tile)`
   &:hover {

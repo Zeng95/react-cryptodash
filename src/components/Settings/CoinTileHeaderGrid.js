@@ -14,11 +14,12 @@ const CoinName = styled.span`
   font-style: italic;
 `
 const CoinDeleteIcon = styled.div`
-  display: none;
+  opacity: 0;
   justify-self: right;
+  transition: all 0.2s;
 
   ${DeletableTile}:hover & {
-    display: block;
+    opacity: 1;
     color: red;
   }
 `
