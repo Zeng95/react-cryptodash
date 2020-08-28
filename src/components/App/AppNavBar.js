@@ -2,39 +2,51 @@ import { AppContext } from 'context/AppContext'
 import { SettingsContext } from 'context/SettingsContext'
 import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
+import { ReactComponent as Language } from 'assets/language.svg'
+import { ReactComponent as Theme } from 'assets/theme.svg'
+import { ReactComponent as Arrow } from 'assets/arrow.svg'
+import { greenBoxShadow } from 'components/Shared/Styles'
 
 const AppNavBarStyled = styled.header`
   display: grid;
-  grid-template-columns: 180px auto 100px 100px 100px 100px;
+  grid-template-columns: 180px auto 100px 100px 120px 110px;
   margin-bottom: 40px;
 `
 const Logo = styled.h1`
   margin: 0;
   font-size: 1.5em;
 `
-const ControlButtonElem = styled.button`
+
+const BasicButton = styled.button`
   cursor: pointer;
   border: none;
   padding: 0;
   background-color: transparent;
   color: white;
-
+`
+const ControlButtonStyled = styled(BasicButton)`
   ${props =>
     props.active &&
     css`
       text-shadow: 0px 0px 20px #03ff03;
     `}
-
-  &:focus {
-    outline: none;
+`
+const LanguageButton = styled(BasicButton)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 8px;
+  transition: all 0.2s;
+  &:hover {
+    background-color: #061a44;
+    ${greenBoxShadow}
   }
 `
-const LanguageButton = styled(ControlButtonElem)``
-const ThemeButton = styled.select`
-  cursor: pointer;
-  background-color: transparent;
-  color: white;
+const LanguageStyled = styled.span`
+  display: inline-block;
+  margin: 0px 8px;
 `
+const ThemeButton = styled(LanguageButton)``
 
 // Extend another class
 class ControlButton extends Component {
@@ -60,7 +72,7 @@ class ControlButton extends Component {
               const { name } = this.props
 
               return (
-                <ControlButtonElem
+                <ControlButtonStyled
                   active={page === name}
                   onClick={() => {
                     this.handleClick(
@@ -72,7 +84,7 @@ class ControlButton extends Component {
                   }}
                 >
                   {this.capitalize(name)}
-                </ControlButtonElem>
+                </ControlButtonStyled>
               )
             }}
           </SettingsContext.Consumer>
@@ -88,12 +100,20 @@ class AppNavBar extends Component {
       <AppNavBarStyled>
         <Logo>CryptoDash</Logo>
         <div className="text-transparent">Space Remaining</div>
+
         <ControlButton name="dashboard" active />
         <ControlButton name="settings" />
-        <LanguageButton>Chinese</LanguageButton>
-        <ThemeButton>
-          <option value="dark">Dark</option>
-          <option value="light">Light</option>
+
+        <LanguageButton title="Change language">
+          <Language style={{ width: '18px', height: '18px', fill: 'white' }} />
+          <LanguageStyled>ENGLISH</LanguageStyled>
+          <Arrow style={{ width: '10px', height: '10px', fill: 'white' }} />
+        </LanguageButton>
+
+        <ThemeButton title="Change theme">
+          <Theme style={{ width: '18px', height: '18px', fill: 'white' }} />
+          <LanguageStyled>Dark</LanguageStyled>
+          <Arrow style={{ width: '10px', height: '10px', fill: 'white' }} />
         </ThemeButton>
       </AppNavBarStyled>
     )
