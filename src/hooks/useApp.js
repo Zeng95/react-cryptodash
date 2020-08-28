@@ -1,6 +1,6 @@
 import cc from 'cryptocompare'
 import moment from 'moment'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { isEmpty } from 'utils'
 
 const TIME_UNITS = 10 // 10 days, 10 months or 10 weeks
@@ -12,19 +12,7 @@ function useApp(defaultPage) {
   const [historicalPrices, setHistoricalPrices] = useState([])
   const [timeInterval, setTimeInterval] = useState('months')
 
-  useEffect(() => {
-    // The JSON.parse() method parses a JSON string
-    const cryptoDashData = JSON.parse(localStorage.getItem('cryptoDash'))
-
-    if (!cryptoDashData) {
-      saveSettings()
-    } else if (!firstVisit && page === 'dashboard') {
-      fetchPrices(cryptoDashData.favorites)
-      fetchHistorical(cryptoDashData.currentFavCoin)
-    }
-  }, [firstVisit, page])
-
-  async function fetchPrices(favorites) {
+  const fetchPrices = async favorites => {
     const priceList = []
 
     for (let i = 0; i < favorites.length; i++) {
@@ -42,47 +30,50 @@ function useApp(defaultPage) {
     setPrices(results)
   }
 
-  async function fetchHistorical(currentFav) {
-    setHistoricalPrices([])
+  const fetchHistorical = useCallback(
+    async currentFav => {
+      setHistoricalPrices([])
 
-    const priceList = []
+      const priceList = []
 
-    for (let time = TIME_UNITS; time >= 1; time--) {
-      try {
-        const price = await cc.priceHistorical(
-          currentFav,
-          'USD',
-          moment().subtract(time, 'months').toDate() // Put it into a JavaScript date
-        )
-        priceList.push(price)
-      } catch (error) {
-        console.error(`Fetch price error: ${error}`)
+      for (let time = TIME_UNITS; time >= 1; time--) {
+        try {
+          const price = await cc.priceHistorical(
+            currentFav,
+            'USD',
+            moment().subtract(time, timeInterval).toDate() // Put it into a JavaScript date
+          )
+          priceList.push(price)
+        } catch (error) {
+          console.error(`Fetch price error: ${error}`)
+        }
       }
-    }
 
-    const historical = [
-      {
-        name: currentFav,
-        data: priceList.map((ticker, index) => {
-          return [
-            moment()
-              .subtract(TIME_UNITS - index, 'months')
-              .valueOf(),
-            ticker.USD
-          ]
-        })
-      }
-    ]
+      const historical = [
+        {
+          name: currentFav,
+          data: priceList.map((ticker, index) => {
+            return [
+              moment()
+                .subtract(TIME_UNITS - index, timeInterval)
+                .valueOf(),
+              ticker.USD
+            ]
+          })
+        }
+      ]
 
-    setHistoricalPrices(historical)
-  }
+      setHistoricalPrices(historical)
+    },
+    [timeInterval]
+  )
 
-  function saveSettings() {
+  const saveSettings = () => {
     setFirstVisit(true)
     setPage('settings')
   }
 
-  function confirmFavorites(favorites) {
+  const confirmFavorites = favorites => {
     localStorage.setItem(
       'cryptoDash',
       JSON.stringify({ favorites, currentFavCoin: favorites[0] })
@@ -92,9 +83,21 @@ function useApp(defaultPage) {
     setPage('dashboard')
   }
 
-  function handleChangeOnChartSelect(event) {
+  const handleChangeOnChartSelect = event => {
     setTimeInterval(event.target.value)
   }
+
+  useEffect(() => {
+    // The JSON.parse() method parses a JSON string
+    const cryptoDashData = JSON.parse(localStorage.getItem('cryptoDash'))
+
+    if (!cryptoDashData) {
+      saveSettings()
+    } else if (!firstVisit && page === 'dashboard') {
+      fetchPrices(cryptoDashData.favorites)
+      fetchHistorical(cryptoDashData.currentFavCoin)
+    }
+  }, [fetchHistorical, firstVisit, page])
 
   return {
     page,

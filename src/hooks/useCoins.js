@@ -19,13 +19,7 @@ function useCoins() {
   ])
   const [currentFavCoin, setCurrentFavCoin] = useState(favoriteCoins[0])
 
-  // Will trigger the callback only after the first render
-  useEffect(() => {
-    saveSettings()
-    fetchCoins()
-  }, [])
-
-  async function fetchCoins() {
+  const fetchCoins = async () => {
     try {
       const { Data, BaseImageUrl } = await cc.coinList()
 
@@ -36,7 +30,7 @@ function useCoins() {
     }
   }
 
-  function saveSettings() {
+  const saveSettings = () => {
     let cryptoDashData = JSON.parse(localStorage.getItem('cryptoDash'))
 
     if (cryptoDashData) {
@@ -45,7 +39,7 @@ function useCoins() {
     }
   }
 
-  function addCoin(coinKey) {
+  const addCoin = coinKey => {
     const favorites = [...favoriteCoins]
 
     // Less than 10
@@ -55,17 +49,17 @@ function useCoins() {
     }
   }
 
-  function removeCoin(coinKey) {
+  const removeCoin = coinKey => {
     const favorites = [...favoriteCoins]
 
     setFavoriteCoins(_.pull(favorites, coinKey))
   }
 
-  function isInFavoriteCoins(coinKey) {
+  const isInFavoriteCoins = coinKey => {
     return favoriteCoins.includes(coinKey)
   }
 
-  function setCurrentFavorite(symbol) {
+  const setCurrentFavorite = symbol => {
     setCurrentFavCoin(symbol)
 
     // cryptoDashData is an object
@@ -77,6 +71,12 @@ function useCoins() {
       JSON.stringify({ ...cryptoDashData, currentFavCoin: symbol })
     )
   }
+
+  // Will trigger the callback only after the first render
+  useEffect(() => {
+    saveSettings()
+    fetchCoins()
+  }, [])
 
   return {
     coins,
