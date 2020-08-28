@@ -1,26 +1,29 @@
 {
   "files": {
-    "main.css": "/react-cryptodash/static/css/main.75a88db5.chunk.css",
-    "main.js": "/react-cryptodash/static/js/main.5d89620a.chunk.js",
-    "main.js.map": "/react-cryptodash/static/js/main.5d89620a.chunk.js.map",
+    "main.css": "/react-cryptodash/static/css/main.85545128.chunk.css",
+    "main.js": "/react-cryptodash/static/js/main.97929440.chunk.js",
+    "main.js.map": "/react-cryptodash/static/js/main.97929440.chunk.js.map",
     "runtime-main.js": "/react-cryptodash/static/js/runtime-main.4db23ac9.js",
     "runtime-main.js.map": "/react-cryptodash/static/js/runtime-main.4db23ac9.js.map",
     "static/css/2.764ccc25.chunk.css": "/react-cryptodash/static/css/2.764ccc25.chunk.css",
     "static/js/2.aa65cfd9.chunk.js": "/react-cryptodash/static/js/2.aa65cfd9.chunk.js",
     "static/js/2.aa65cfd9.chunk.js.map": "/react-cryptodash/static/js/2.aa65cfd9.chunk.js.map",
     "index.html": "/react-cryptodash/index.html",
-    "precache-manifest.f0359a0bbdf4d3cf4421628a83f1a37e.js": "/react-cryptodash/precache-manifest.f0359a0bbdf4d3cf4421628a83f1a37e.js",
+    "precache-manifest.7924d1679c3f1820a58a215d23f5d48d.js": "/react-cryptodash/precache-manifest.7924d1679c3f1820a58a215d23f5d48d.js",
     "service-worker.js": "/react-cryptodash/service-worker.js",
     "static/css/2.764ccc25.chunk.css.map": "/react-cryptodash/static/css/2.764ccc25.chunk.css.map",
-    "static/css/main.75a88db5.chunk.css.map": "/react-cryptodash/static/css/main.75a88db5.chunk.css.map",
+    "static/css/main.85545128.chunk.css.map": "/react-cryptodash/static/css/main.85545128.chunk.css.map",
     "static/js/2.aa65cfd9.chunk.js.LICENSE.txt": "/react-cryptodash/static/js/2.aa65cfd9.chunk.js.LICENSE.txt",
-    "static/media/hearts.95b56fc3.svg": "/react-cryptodash/static/media/hearts.95b56fc3.svg"
+    "static/media/arrow.9aef94ce.svg": "/react-cryptodash/static/media/arrow.9aef94ce.svg",
+    "static/media/hearts.95b56fc3.svg": "/react-cryptodash/static/media/hearts.95b56fc3.svg",
+    "static/media/language.d8843e92.svg": "/react-cryptodash/static/media/language.d8843e92.svg",
+    "static/media/theme.c1069b4e.svg": "/react-cryptodash/static/media/theme.c1069b4e.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.4db23ac9.js",
     "static/css/2.764ccc25.chunk.css",
     "static/js/2.aa65cfd9.chunk.js",
-    "static/css/main.75a88db5.chunk.css",
-    "static/js/main.5d89620a.chunk.js"
+    "static/css/main.85545128.chunk.css",
+    "static/js/main.97929440.chunk.js"
   ]
 }
