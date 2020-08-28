@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c975d48505270de1ff0101aa064d8128",
+    "revision": "1beada920c6e916fc6779aa0bfac885c",
     "url": "/react-cryptodash/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-cryptodash/static/css/2.764ccc25.chunk.css"
   },
   {
-    "revision": "30fac176652e85e03ba6",
+    "revision": "5a7d6d371d913aca5b4d",
     "url": "/react-cryptodash/static/css/main.85545128.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-cryptodash/static/js/2.aa65cfd9.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "30fac176652e85e03ba6",
-    "url": "/react-cryptodash/static/js/main.97929440.chunk.js"
+    "revision": "5a7d6d371d913aca5b4d",
+    "url": "/react-cryptodash/static/js/main.13ac4226.chunk.js"
   },
   {
     "revision": "3a6e6ad4a9e20167c140",
