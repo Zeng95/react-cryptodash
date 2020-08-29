@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/react-cryptodash/static/css/main.85545128.chunk.css",
-    "main.js": "/react-cryptodash/static/js/main.13ac4226.chunk.js",
-    "main.js.map": "/react-cryptodash/static/js/main.13ac4226.chunk.js.map",
+    "main.css": "/react-cryptodash/static/css/main.89db6624.chunk.css",
+    "main.js": "/react-cryptodash/static/js/main.c7e69b64.chunk.js",
+    "main.js.map": "/react-cryptodash/static/js/main.c7e69b64.chunk.js.map",
     "runtime-main.js": "/react-cryptodash/static/js/runtime-main.4db23ac9.js",
     "runtime-main.js.map": "/react-cryptodash/static/js/runtime-main.4db23ac9.js.map",
     "static/css/2.764ccc25.chunk.css": "/react-cryptodash/static/css/2.764ccc25.chunk.css",
-    "static/js/2.aa65cfd9.chunk.js": "/react-cryptodash/static/js/2.aa65cfd9.chunk.js",
-    "static/js/2.aa65cfd9.chunk.js.map": "/react-cryptodash/static/js/2.aa65cfd9.chunk.js.map",
+    "static/js/2.46f39015.chunk.js": "/react-cryptodash/static/js/2.46f39015.chunk.js",
+    "static/js/2.46f39015.chunk.js.map": "/react-cryptodash/static/js/2.46f39015.chunk.js.map",
     "index.html": "/react-cryptodash/index.html",
-    "precache-manifest.427fc650d5a864511d5a0f9a21d10e6e.js": "/react-cryptodash/precache-manifest.427fc650d5a864511d5a0f9a21d10e6e.js",
+    "precache-manifest.c1707d3fbe36c12f55d18ef0990c3dcc.js": "/react-cryptodash/precache-manifest.c1707d3fbe36c12f55d18ef0990c3dcc.js",
     "service-worker.js": "/react-cryptodash/service-worker.js",
     "static/css/2.764ccc25.chunk.css.map": "/react-cryptodash/static/css/2.764ccc25.chunk.css.map",
-    "static/css/main.85545128.chunk.css.map": "/react-cryptodash/static/css/main.85545128.chunk.css.map",
-    "static/js/2.aa65cfd9.chunk.js.LICENSE.txt": "/react-cryptodash/static/js/2.aa65cfd9.chunk.js.LICENSE.txt",
+    "static/css/main.89db6624.chunk.css.map": "/react-cryptodash/static/css/main.89db6624.chunk.css.map",
+    "static/js/2.46f39015.chunk.js.LICENSE.txt": "/react-cryptodash/static/js/2.46f39015.chunk.js.LICENSE.txt",
     "static/media/arrow.9aef94ce.svg": "/react-cryptodash/static/media/arrow.9aef94ce.svg",
     "static/media/hearts.95b56fc3.svg": "/react-cryptodash/static/media/hearts.95b56fc3.svg",
     "static/media/language.d8843e92.svg": "/react-cryptodash/static/media/language.d8843e92.svg",
@@ -22,8 +22,8 @@
   "entrypoints": [
     "static/js/runtime-main.4db23ac9.js",
     "static/css/2.764ccc25.chunk.css",
-    "static/js/2.aa65cfd9.chunk.js",
-    "static/css/main.85545128.chunk.css",
-    "static/js/main.13ac4226.chunk.js"
+    "static/js/2.46f39015.chunk.js",
+    "static/css/main.89db6624.chunk.css",
+    "static/js/main.c7e69b64.chunk.js"
   ]
 }
