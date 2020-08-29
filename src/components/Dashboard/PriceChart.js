@@ -1,14 +1,14 @@
+import { ReactComponent as Loading } from 'assets/hearts.svg'
+import { color4 } from 'components/Shared/Styles.js'
 import { Tile } from 'components/Shared/Tile'
+import { AppContext } from 'context/AppContext'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import React, { Component } from 'react'
+import styled from 'styled-components'
+import ChartSelect from './ChartSelect'
 import HighchartsOptions from './HighchartsOptions'
 import HighchartsTheme from './HighchartsTheme'
-import { AppContext } from 'context/AppContext'
-import ChartSelect from './ChartSelect'
-import { ReactComponent as Loading } from 'assets/hearts.svg'
-import styled from 'styled-components'
-import { color4 } from 'components/Shared/Styles.js'
 
 Highcharts.setOptions(HighchartsTheme)
 
