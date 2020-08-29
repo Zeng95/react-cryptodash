@@ -26,10 +26,8 @@ const LoadingText = styled.p`
 
 class PriceChart extends Component {
   render() {
-    const { Consumer } = AppContext
-
     return (
-      <Consumer>
+      <AppContext.Consumer>
         {({
           timeInterval,
           historicalPrices: historical,
@@ -58,7 +56,7 @@ class PriceChart extends Component {
             )}
           </Tile>
         )}
-      </Consumer>
+      </AppContext.Consumer>
     )
   }
 }

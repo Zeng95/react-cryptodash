@@ -1,15 +1,16 @@
+import { ReactComponent as ArrowIcon } from 'assets/arrow.svg'
+import { ReactComponent as LanguageIcon } from 'assets/language.svg'
+import { ReactComponent as ThemeIcon } from 'assets/theme.svg'
+import { greenBoxShadow } from 'components/Shared/Styles'
 import { AppContext } from 'context/AppContext'
 import { SettingsContext } from 'context/SettingsContext'
 import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
-import { ReactComponent as Language } from 'assets/language.svg'
-import { ReactComponent as Theme } from 'assets/theme.svg'
-import { ReactComponent as Arrow } from 'assets/arrow.svg'
-import { greenBoxShadow } from 'components/Shared/Styles'
+import AppMenu from './AppMenu'
 
 const AppNavBarStyled = styled.header`
   display: grid;
-  grid-template-columns: 180px auto 100px 100px 120px 110px;
+  grid-template-columns: 180px auto 100px 100px 120px 120px;
   margin-bottom: 40px;
 `
 const Logo = styled.h1`
@@ -31,7 +32,8 @@ const ControlButtonStyled = styled(BasicButton)`
       text-shadow: 0px 0px 20px #03ff03;
     `}
 `
-const LanguageButton = styled(BasicButton)`
+const LanguageButtonStyled = styled(BasicButton)`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,11 +44,11 @@ const LanguageButton = styled(BasicButton)`
     ${greenBoxShadow}
   }
 `
-const LanguageStyled = styled.span`
+const Language = styled.span`
   display: inline-block;
   margin: 0px 8px;
 `
-const ThemeButton = styled(LanguageButton)``
+const ThemeButtonStyled = styled(LanguageButtonStyled)``
 
 // Extend another class
 class ControlButton extends Component {
@@ -94,6 +96,63 @@ class ControlButton extends Component {
   }
 }
 
+class LanguageButton extends Component {
+  render() {
+    return (
+      <AppContext.Consumer>
+        {({ languageVisible, setLanguageVisible, toggleMenuVisible }) => (
+          <LanguageButtonStyled
+            title="Change language"
+            onClick={() =>
+              toggleMenuVisible(languageVisible, setLanguageVisible)
+            }
+          >
+            <LanguageIcon
+              style={{ width: '18px', height: '18px', fill: 'white' }}
+            />
+            <Language>ENGLISH</Language>
+            <ArrowIcon
+              style={{ width: '10px', height: '10px', fill: 'white' }}
+            />
+            <AppMenu menuVisible={languageVisible}>
+              <li>English</li>
+              <li>中文</li>
+              <li>Español</li>
+            </AppMenu>
+          </LanguageButtonStyled>
+        )}
+      </AppContext.Consumer>
+    )
+  }
+}
+
+class ThemeButton extends Component {
+  render() {
+    return (
+      <AppContext.Consumer>
+        {({ themeVisible, setThemeVisible, toggleMenuVisible }) => (
+          <ThemeButtonStyled
+            title="Change theme"
+            onClick={() => toggleMenuVisible(themeVisible, setThemeVisible)}
+          >
+            <ThemeIcon
+              style={{ width: '18px', height: '18px', fill: 'white' }}
+            />
+            <Language>Dark</Language>
+            <ArrowIcon
+              style={{ width: '10px', height: '10px', fill: 'white' }}
+            />
+            <AppMenu menuVisible={themeVisible}>
+              <li>Dark</li>
+              <li>Light</li>
+            </AppMenu>
+          </ThemeButtonStyled>
+        )}
+      </AppContext.Consumer>
+    )
+  }
+}
+
 class AppNavBar extends Component {
   render() {
     return (
@@ -104,17 +163,8 @@ class AppNavBar extends Component {
         <ControlButton name="dashboard" active />
         <ControlButton name="settings" />
 
-        <LanguageButton title="Change language">
-          <Language style={{ width: '18px', height: '18px', fill: 'white' }} />
-          <LanguageStyled>ENGLISH</LanguageStyled>
-          <Arrow style={{ width: '10px', height: '10px', fill: 'white' }} />
-        </LanguageButton>
-
-        <ThemeButton title="Change theme">
-          <Theme style={{ width: '18px', height: '18px', fill: 'white' }} />
-          <LanguageStyled>Dark</LanguageStyled>
-          <Arrow style={{ width: '10px', height: '10px', fill: 'white' }} />
-        </ThemeButton>
+        <LanguageButton />
+        <ThemeButton />
       </AppNavBarStyled>
     )
   }

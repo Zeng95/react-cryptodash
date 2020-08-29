@@ -114,13 +114,10 @@ class PriceTileCompact extends Component {
 
 class TileClass extends Component {
   render() {
-    const { Consumer: AppContextConsumer } = AppContext
-    const { Consumer: SettingsContextConsumer } = SettingsContext
-
     return (
-      <AppContextConsumer>
+      <AppContext.Consumer>
         {({ fetchHistorical }) => (
-          <SettingsContextConsumer>
+          <SettingsContext.Consumer>
             {({ currentFavCoin, setCurrentFavorite }) => {
               const { price, index } = this.props
               const symbol = Object.keys(price)[0]
@@ -144,9 +141,9 @@ class TileClass extends Component {
                 />
               )
             }}
-          </SettingsContextConsumer>
+          </SettingsContext.Consumer>
         )}
-      </AppContextConsumer>
+      </AppContext.Consumer>
     )
   }
 }

@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import TileClass from './PriceTile'
 
-const { Consumer } = AppContext
 const PriceGirdStyled = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -14,7 +13,7 @@ const PriceGirdStyled = styled.div`
 class PriceGird extends Component {
   render() {
     return (
-      <Consumer>
+      <AppContext.Consumer>
         {({ prices }) => (
           <PriceGirdStyled>
             {prices.map((price, index) => (
@@ -26,7 +25,7 @@ class PriceGird extends Component {
             ))}
           </PriceGirdStyled>
         )}
-      </Consumer>
+      </AppContext.Consumer>
     )
   }
 }
