@@ -1,6 +1,6 @@
 import { ReactComponent as Loading } from 'assets/hearts.svg'
-import { color4 } from 'components/Shared/Styles.js'
-import { Tile } from 'components/Shared/Tile'
+import { color4 } from '../Shared/Styles.js'
+import { Tile } from '../Shared/Tile'
 import { AppContext } from 'context/AppContext'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'

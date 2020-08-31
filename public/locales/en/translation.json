@@ -1,6 +1,5 @@
 {
-  "navbar": {
-    "dashboard-button": "Dashboard",
-    "settings-button": "Settings"
+  "settings": {
+    "confirm": "Confirm Favorites"
   }
 }

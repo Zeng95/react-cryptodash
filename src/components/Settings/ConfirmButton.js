@@ -1,7 +1,8 @@
-import { color3, fontSize1, greenBoxShadow } from 'components/Shared/Styles'
+import { color3, fontSize1, greenBoxShadow } from '../Shared/Styles'
 import { AppContext } from 'context/AppContext'
 import { SettingsContext } from 'context/SettingsContext'
 import React, { Component } from 'react'
+import { withTranslation } from 'react-i18next'
 import styled from 'styled-components'
 
 const CenterDiv = styled.div`
@@ -28,13 +29,12 @@ const ConfirmButtonStyled = styled.button`
 
 class ConfirmButton extends Component {
   render() {
-    const { Consumer: AppContextConsumer } = AppContext
-    const { Consumer: SettingsContextConsumer } = SettingsContext
+    const { t } = this.props
 
     return (
-      <AppContextConsumer>
+      <AppContext.Consumer>
         {value => (
-          <SettingsContextConsumer>
+          <SettingsContext.Consumer>
             {({ favoriteCoins: favCoinKeys }) => {
               const { confirmFavorites } = value
 
@@ -43,16 +43,16 @@ class ConfirmButton extends Component {
                   <ConfirmButtonStyled
                     onClick={() => confirmFavorites(favCoinKeys)}
                   >
-                    Confirm Favorites
+                    {t('settings.confirm')}
                   </ConfirmButtonStyled>
                 </CenterDiv>
               )
             }}
-          </SettingsContextConsumer>
+          </SettingsContext.Consumer>
         )}
-      </AppContextConsumer>
+      </AppContext.Consumer>
     )
   }
 }
 
-export default ConfirmButton
+export default withTranslation()(ConfirmButton)

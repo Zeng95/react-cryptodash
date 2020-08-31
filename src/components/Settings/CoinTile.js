@@ -1,8 +1,4 @@
-import {
-  DeletableTile,
-  DisabledTile,
-  SelectableTile
-} from 'components/Shared/Tile'
+import { DeletableTile, DisabledTile, SelectableTile } from '../Shared/Tile'
 import { SettingsContext } from 'context/SettingsContext'
 import React, { Component } from 'react'
 import CoinTileHeaderGrid from './CoinTileHeaderGrid'

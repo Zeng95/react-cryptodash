@@ -1,13 +1,9 @@
 import {
   CoinSymbol,
   CoinTileHeaderGridStyled
-} from 'components/Settings/CoinTileHeaderGrid'
-import {
-  fontSize3,
-  fontSizeBig,
-  greenBoxShadow
-} from 'components/Shared/Styles.js'
-import { SelectableTile } from 'components/Shared/Tile'
+} from '../Settings/CoinTileHeaderGrid'
+import { fontSize3, fontSizeBig, greenBoxShadow } from '../Shared/Styles.js'
+import { SelectableTile } from '../Shared/Tile'
 import { AppContext } from 'context/AppContext'
 import { SettingsContext } from 'context/SettingsContext'
 import React, { Component } from 'react'

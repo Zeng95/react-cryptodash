@@ -1,7 +1,7 @@
 import cc from 'cryptocompare'
 import moment from 'moment'
 import { useEffect, useState, useCallback } from 'react'
-import { isEmpty } from 'utils'
+import { isEmpty } from '../utils'
 
 const TIME_UNITS = 10 // 10 days, 10 months or 10 weeks
 

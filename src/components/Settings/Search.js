@@ -1,4 +1,4 @@
-import { darkBlueBackground, fontSize2 } from 'components/Shared/Styles'
+import { darkBlueBackground, fontSize2 } from '../Shared/Styles'
 import { SettingsContext } from 'context/SettingsContext'
 import fuzzy from 'fuzzy'
 import _ from 'lodash'

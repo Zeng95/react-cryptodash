@@ -1,4 +1,4 @@
-import { color } from 'components/Shared/Styles.js'
+import { color } from '../Shared/Styles.js'
 
 export default {
   colors: ['#61d936'],

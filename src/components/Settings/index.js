@@ -1,4 +1,4 @@
-import Page from 'components/Shared/Page'
+import Page from '../Shared/Page'
 import React, { Component } from 'react'
 import CoinGrid from './CoinGrid'
 import ConfirmButton from './ConfirmButton'

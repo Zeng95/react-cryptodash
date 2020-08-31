@@ -1,7 +1,7 @@
 import { ReactComponent as ArrowIcon } from 'assets/arrow.svg'
 import { ReactComponent as LanguageIcon } from 'assets/language.svg'
 import { ReactComponent as ThemeIcon } from 'assets/theme.svg'
-import { greenBoxShadow } from 'components/Shared/Styles'
+import { greenBoxShadow } from '../Shared/Styles'
 import { AppContext } from 'context/AppContext'
 import { SettingsContext } from 'context/SettingsContext'
 import React, { Component } from 'react'
@@ -138,7 +138,7 @@ class ThemeButton extends Component {
             <ThemeIcon
               style={{ width: '18px', height: '18px', fill: 'white' }}
             />
-            <Language>Dark</Language>
+            <Language>DARK</Language>
             <ArrowIcon
               style={{ width: '10px', height: '10px', fill: 'white' }}
             />

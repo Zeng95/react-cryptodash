@@ -1,4 +1,4 @@
-import Page from 'components/Shared/Page'
+import Page from '../Shared/Page'
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import CoinSpotlight from './CoinSpotlight'

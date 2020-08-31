@@ -1,4 +1,4 @@
-import { textAlignLeft } from 'components/Shared/Styles'
+import { textAlignLeft } from '../Shared/Styles'
 import styled, { css } from 'styled-components'
 
 export default styled.ul`

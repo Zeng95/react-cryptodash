@@ -1,4 +1,4 @@
-import { Tile } from 'components/Shared/Tile'
+import { Tile } from '../Shared/Tile'
 import { SettingsContext } from 'context/SettingsContext'
 import React, { Component } from 'react'
 import styled from 'styled-components'

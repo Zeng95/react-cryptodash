@@ -1,4 +1,4 @@
-import { darkBlueBackground, fontSize2 } from 'components/Shared/Styles'
+import { darkBlueBackground, fontSize2 } from '../Shared/Styles'
 import styled from 'styled-components'
 
 export default styled.select`
