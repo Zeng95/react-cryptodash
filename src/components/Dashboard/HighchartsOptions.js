@@ -1,12 +1,12 @@
-export default function (historical) {
+export default function (historical, t) {
   return {
     title: {
-      text: 'Data Visualization'
+      text: t('dashboard.chart.title')
     },
 
     yAxis: {
       title: {
-        text: 'Prices'
+        text: t('dashboard.chart.yAxis.title')
       }
     },
 

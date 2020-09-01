@@ -6,7 +6,6 @@ import HighchartsReact from 'highcharts-react-official'
 import React, { Component } from 'react'
 import { withTranslation } from 'react-i18next'
 import styled from 'styled-components'
-import { color4 } from '../Shared/Styles.js'
 import { Tile } from '../Shared/Tile'
 import ChartSelect from './ChartSelect'
 import HighchartsOptions from './HighchartsOptions'
@@ -38,32 +37,43 @@ class PriceChart extends Component {
           handleChangeOnChartSelect
         }) => (
           <ThemeContext.Consumer>
-            {({ theme }) => (
-              <Tile theme={theme}>
-                <ChartSelect
-                  value={timeInterval}
-                  onChange={handleChangeOnChartSelect}
-                >
-                  <option value="days">Days</option>
-                  <option value="weeks">Weeks</option>
-                  <option value="months">Months</option>
-                </ChartSelect>
+            {({ theme }) => {
+              return (
+                <Tile theme={theme}>
+                  <ChartSelect
+                    theme={theme}
+                    value={timeInterval}
+                    onChange={handleChangeOnChartSelect}
+                  >
+                    <option value="days">
+                      {t('dashboard.chart.select.days')}
+                    </option>
+                    <option value="weeks">
+                      {t('dashboard.chart.select.weeks')}
+                    </option>
+                    <option value="months">
+                      {t('dashboard.chart.select.months')}
+                    </option>
+                  </ChartSelect>
 
-                {historical.length === 0 ? (
-                  <LoadingContainer>
-                    <LoadingText>{t('dashboard.historicalPrices')}</LoadingText>
-                    <Loading
-                      style={{ transform: 'scale(1.6)', fill: color4 }}
+                  {historical.length === 0 ? (
+                    <LoadingContainer>
+                      <LoadingText>
+                        {t('dashboard.historicalPrices')}
+                      </LoadingText>
+                      <Loading
+                        style={{ transform: 'scale(1.6)', fill: theme.color4 }}
+                      />
+                    </LoadingContainer>
+                  ) : (
+                    <HighchartsReact
+                      highcharts={Highcharts}
+                      options={HighchartsOptions(historical, t)}
                     />
-                  </LoadingContainer>
-                ) : (
-                  <HighchartsReact
-                    highcharts={Highcharts}
-                    options={HighchartsOptions(historical)}
-                  />
-                )}
-              </Tile>
-            )}
+                  )}
+                </Tile>
+              )
+            }}
           </ThemeContext.Consumer>
         )}
       </AppContext.Consumer>

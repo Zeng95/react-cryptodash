@@ -4,8 +4,12 @@
     "prices": "Cargando precios..."
   },
   "navbar": {
-    "dashboard": "tablero",
-    "settings": "ajustes"
+    "dashboard": "Tablero",
+    "settings": "Ajustes",
+    "theme": {
+      "dark": "Oscuro",
+      "light": "Ligero"
+    }
   },
   "settings": {
     "welcome": "Bienvenido a CryptoDash, seleccione sus monedas favoritas para comenzar.",
@@ -13,6 +17,17 @@
     "search": "Buscar todas las monedas"
   },
   "dashboard": {
-    "historicalPrices": "Cargando datos históricos..."
+    "historicalPrices": "Cargando datos históricos...",
+    "chart": {
+      "title": "Visualización de datos",
+      "yAxis": {
+        "title": "Precios"
+      },
+      "select": {
+        "days": "Dias",
+        "weeks": "Semanas",
+        "months": "Meses"
+      }
+    }
   }
 }

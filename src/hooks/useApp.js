@@ -43,7 +43,9 @@ function useApp() {
           const price = await cc.priceHistorical(
             currentFav,
             'USD',
-            moment().subtract(time, timeInterval).toDate() // Put it into a JavaScript date
+            moment()
+              .subtract({ [timeInterval]: time })
+              .toDate() // Put it into a JavaScript date
           )
           priceList.push(price)
         } catch (error) {
@@ -56,8 +58,9 @@ function useApp() {
           name: currentFav,
           data: priceList.map((ticker, index) => {
             return [
+              // The valueOf() method returns the primitive value of a Date object.
               moment()
-                .subtract(TIME_UNITS - index, timeInterval)
+                .subtract({ [timeInterval]: TIME_UNITS - index })
                 .valueOf(),
               ticker.USD
             ]

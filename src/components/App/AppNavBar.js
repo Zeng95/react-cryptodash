@@ -188,8 +188,22 @@ class LanguageButton extends Component {
 }
 
 class ThemeButton extends Component {
+  getTheme(i18n, isDark) {
+    const language = i18n.language
+
+    if (language === 'en') {
+      return isDark ? 'dark' : 'light'
+    } else if (language === 'es') {
+      return isDark ? 'oscuro' : 'ligero'
+    } else if (language === 'zh') {
+      return isDark ? '深色' : '浅色'
+    }
+  }
+
   render() {
     const {
+      t,
+      i18n,
       isDark,
       theme,
       toggleTheme,
@@ -210,12 +224,16 @@ class ThemeButton extends Component {
             ) : (
               <ThemeSolidIcon style={langIconStyle} />
             )}
-            <Language>{isDark ? 'dark' : 'light'}</Language>
+            <Language>{this.getTheme(i18n, isDark)}</Language>
             <ArrowIcon style={arrowIconStyle} />
 
             <AppMenu menuVisible={themeVisible}>
-              <li onClick={() => toggleTheme(true)}>Dark</li>
-              <li onClick={() => toggleTheme(false)}>Light</li>
+              <li onClick={() => toggleTheme(true)}>
+                {t('navbar.theme.dark')}
+              </li>
+              <li onClick={() => toggleTheme(false)}>
+                {t('navbar.theme.light')}
+              </li>
             </AppMenu>
           </ThemeButtonStyled>
         )}
@@ -259,6 +277,8 @@ class AppNavBar extends Component {
                 arrowIconStyle={arrowIconStyle}
               />
               <ThemeButton
+                t={t}
+                i18n={i18n}
                 isDark={dark}
                 theme={theme}
                 langIconStyle={languageIconStyle}
