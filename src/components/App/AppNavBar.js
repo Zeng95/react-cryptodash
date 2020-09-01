@@ -110,11 +110,17 @@ class ControlButton extends Component {
 class LanguageButton extends Component {
   handleClick(t, i18n, language, page, setPage) {
     if (page === t('navbar.dashboard')) {
-      i18n.changeLanguage(language)
-      setPage(t('navbar.dashboard'))
+      i18n.changeLanguage(language, (err, t) => {
+        if (err) return console.log('something went wrong loading', err)
+
+        setPage(t('navbar.dashboard'))
+      })
     } else if (page === t('navbar.settings')) {
-      i18n.changeLanguage(language)
-      setPage(t('navbar.settings'))
+      i18n.changeLanguage(language, (err, t) => {
+        if (err) return console.log('something went wrong loading', err)
+
+        setPage(t('navbar.settings'))
+      })
     }
   }
 
