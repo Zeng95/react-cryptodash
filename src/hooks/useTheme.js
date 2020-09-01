@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { themes } from 'components/Shared/Styles'
 
 function useTheme() {
-  const [dark, setDark] = useState(true) // Default theme is light
+  const [dark, setDark] = useState(true) // Default theme is dark
 
   // To toggle between dark and light modes
   const toggleTheme = isDark => {
