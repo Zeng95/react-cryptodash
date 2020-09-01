@@ -7,9 +7,33 @@ export const color2 = lightTheme ? 'white' : '#010e2c'
 export const color3 = lightTheme ? '#09f010' : '#42ff3a'
 export const color4 = lightTheme ? '#061a44' : 'white'
 
-if (lightTheme) {
-  document.body.style.background = '#e1eaee'
-  document.body.style.color = '#061a44'
+export const themes = {
+  dark: {
+    color: '#061a44',
+    color2: '#010e2c',
+    color3: '#42ff3a',
+    color4: 'white',
+
+    backgroundColor: 'background-color: #010e2c;',
+    lightBlueBackground: 'background-color: #061a44;',
+    darkBlueBackground: 'background-color: #010e2c;',
+    greenBackground: 'background-color: #42ff3a;',
+
+    subtleBoxShadow: 'box-shadow: 0px 0px 5px 1px #121d5b;'
+  },
+  light: {
+    color: 'white',
+    color2: 'white',
+    color3: '#09f010',
+    color4: '#061a44',
+
+    backgroundColor: 'background-color: #e1eaee;',
+    lightBlueBackground: 'background-color: white;',
+    darkBlueBackground: 'background-color: white;',
+    greenBackground: 'background-color: #09f010;',
+
+    subtleBoxShadow: 'box-shadow: 0px 0px 5px 1px #a9b6ff;'
+  }
 }
 
 export const lightBlueBackground = `background-color: ${color};`

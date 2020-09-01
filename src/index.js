@@ -1,17 +1,19 @@
+import { ThemeContextProvider } from 'context/ThemeContext'
+import 'normalize.css'
 import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom'
-import 'normalize.css'
-import './index.css'
 import App from './components/App/'
-import * as serviceWorker from './serviceWorker'
-
 // import i18n (needs to be bundled ;))
 import './i18n'
+import './index.css'
+import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(
   <React.StrictMode>
     <Suspense fallback={null}>
-      <App />
+      <ThemeContextProvider>
+        <App />
+      </ThemeContextProvider>
     </Suspense>
   </React.StrictMode>,
   document.getElementById('root')

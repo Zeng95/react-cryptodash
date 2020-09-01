@@ -1,5 +1,6 @@
 import { AppContext } from 'context/AppContext'
 import React, { Component } from 'react'
+import { withTranslation } from 'react-i18next'
 import styled from 'styled-components'
 
 const WelcomeStyled = styled.h1`
@@ -10,20 +11,18 @@ const WelcomeStyled = styled.h1`
 
 class Welcome extends Component {
   render() {
-    const { Consumer } = AppContext
+    const { t } = this.props
 
     return (
-      <Consumer>
+      <AppContext.Consumer>
         {({ firstVisit }) => {
           return firstVisit ? (
-            <WelcomeStyled>
-              Welcome to CryptoDash, please select your favorite coins to begin.
-            </WelcomeStyled>
+            <WelcomeStyled>{t('settings.welcome')}</WelcomeStyled>
           ) : null
         }}
-      </Consumer>
+      </AppContext.Consumer>
     )
   }
 }
 
-export default Welcome
+export default withTranslation()(Welcome)

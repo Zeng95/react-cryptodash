@@ -4,11 +4,14 @@ import CoinGrid from './CoinGrid'
 import ConfirmButton from './ConfirmButton'
 import Search from './Search'
 import WelcomeMessage from './WelcomeMessage'
+import { withTranslation } from 'react-i18next'
 
 class Settings extends Component {
   render() {
+    const { t } = this.props
+
     return (
-      <Page name="settings">
+      <Page name={t('navbar.settings')}>
         <WelcomeMessage />
         <CoinGrid topSection={true} />
         <ConfirmButton />
@@ -19,4 +22,4 @@ class Settings extends Component {
   }
 }
 
-export default Settings
+export default withTranslation()(Settings)

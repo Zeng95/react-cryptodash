@@ -9,9 +9,11 @@ function AppContextProvider(props) {
   const app = useApp()
   const menu = useMenu()
 
-  const { Provider } = AppContext
-
-  return <Provider value={{ ...app, ...menu }}>{props.children}</Provider>
+  return (
+    <AppContext.Provider value={{ ...app, ...menu }}>
+      {props.children}
+    </AppContext.Provider>
+  )
 }
 
 export { AppContext, AppContextProvider }

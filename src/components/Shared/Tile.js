@@ -1,17 +1,15 @@
-import styled from 'styled-components'
-import {
-  subtleBoxShadow,
-  redBoxShadow,
-  greenBoxShadow,
-  lightBlueBackground
-} from './Styles'
+import styled, { css } from 'styled-components'
+import { redBoxShadow, greenBoxShadow } from './Styles'
 
 export const Tile = styled.div`
   position: relative;
   padding: 10px;
-  ${subtleBoxShadow}
-  ${lightBlueBackground}
   transition: all 0.2s;
+  ${({ theme }) =>
+    css`
+      ${theme.lightBlueBackground}
+      ${theme.subtleBoxShadow}
+    `}
 `
 export const SelectableTile = styled(Tile)`
   &:hover {

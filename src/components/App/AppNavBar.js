@@ -1,13 +1,17 @@
 import { ReactComponent as ArrowIcon } from 'assets/arrow.svg'
 import { ReactComponent as LanguageIcon } from 'assets/language.svg'
 import { ReactComponent as ThemeIcon } from 'assets/theme.svg'
-import { greenBoxShadow } from '../Shared/Styles'
 import { AppContext } from 'context/AppContext'
 import { SettingsContext } from 'context/SettingsContext'
+import { ThemeContext } from 'context/ThemeContext'
 import React, { Component } from 'react'
+import { withTranslation } from 'react-i18next'
 import styled, { css } from 'styled-components'
+import { greenBoxShadow } from '../Shared/Styles'
 import AppMenu from './AppMenu'
 
+const LanguageIconStyle = { width: '18px', height: '18px', fill: 'white' }
+const ArrowIconStyle = { width: '10px', height: '10px', fill: 'white' }
 const AppNavBarStyled = styled.header`
   display: grid;
   grid-template-columns: 180px auto 100px 100px 120px 120px;
@@ -23,7 +27,7 @@ const BasicButton = styled.button`
   border: none;
   padding: 0;
   background-color: transparent;
-  color: white;
+  color: inherit;
 `
 const ControlButtonStyled = styled(BasicButton)`
   ${props =>
@@ -47,6 +51,7 @@ const LanguageButtonStyled = styled(BasicButton)`
 const Language = styled.span`
   display: inline-block;
   margin: 0px 8px;
+  text-transform: uppercase;
 `
 const ThemeButtonStyled = styled(LanguageButtonStyled)``
 
@@ -57,8 +62,8 @@ class ControlButton extends Component {
     return str.charAt(0).toUpperCase() + str.substring(1).toLowerCase()
   }
 
-  handleClick(name, setPage, favoriteCoins, confirmFavorites) {
-    if (name === 'dashboard') {
+  handleClick(t, name, setPage, favoriteCoins, confirmFavorites) {
+    if (name === t('navbar.dashboard')) {
       confirmFavorites(favoriteCoins)
     }
 
@@ -66,6 +71,8 @@ class ControlButton extends Component {
   }
 
   render() {
+    const { t } = this.props
+
     return (
       <AppContext.Consumer>
         {({ page, setPage, confirmFavorites }) => (
@@ -78,6 +85,7 @@ class ControlButton extends Component {
                   active={page === name}
                   onClick={() => {
                     this.handleClick(
+                      t,
                       name,
                       setPage,
                       favoriteCoins,
@@ -97,30 +105,73 @@ class ControlButton extends Component {
 }
 
 class LanguageButton extends Component {
+  handleClick(t, i18n, language, page, setPage) {
+    if (page === t('navbar.dashboard')) {
+      i18n.changeLanguage(language)
+      setPage(t('navbar.dashboard'))
+    } else if (page === t('navbar.settings')) {
+      i18n.changeLanguage(language)
+      setPage(t('navbar.settings'))
+    }
+  }
+
+  getLanguage(i18n) {
+    const language = i18n.language
+
+    if (language === 'en') {
+      return 'English'
+    } else if (language === 'es') {
+      return 'Español'
+    } else if (language === 'zh') {
+      return '中文'
+    }
+  }
+
   render() {
+    const { t, i18n } = this.props
+
     return (
       <AppContext.Consumer>
-        {({ languageVisible, setLanguageVisible, toggleMenuVisible }) => (
-          <LanguageButtonStyled
-            title="Change language"
-            onClick={() =>
-              toggleMenuVisible(languageVisible, setLanguageVisible)
-            }
-          >
-            <LanguageIcon
-              style={{ width: '18px', height: '18px', fill: 'white' }}
-            />
-            <Language>ENGLISH</Language>
-            <ArrowIcon
-              style={{ width: '10px', height: '10px', fill: 'white' }}
-            />
-            <AppMenu menuVisible={languageVisible}>
-              <li>English</li>
-              <li>中文</li>
-              <li>Español</li>
-            </AppMenu>
-          </LanguageButtonStyled>
-        )}
+        {value => {
+          const {
+            page,
+            setPage,
+            languageVisible,
+            setLanguageVisible,
+            toggleMenuVisible
+          } = value
+
+          return (
+            <LanguageButtonStyled
+              title="Change language"
+              onClick={() =>
+                toggleMenuVisible(languageVisible, setLanguageVisible)
+              }
+            >
+              <LanguageIcon style={LanguageIconStyle} />
+              <Language>{this.getLanguage(i18n)}</Language>
+              <ArrowIcon style={ArrowIconStyle} />
+
+              <AppMenu menuVisible={languageVisible}>
+                <li
+                  onClick={() => this.handleClick(t, i18n, 'en', page, setPage)}
+                >
+                  English
+                </li>
+                <li
+                  onClick={() => this.handleClick(t, i18n, 'zh', page, setPage)}
+                >
+                  中文
+                </li>
+                <li
+                  onClick={() => this.handleClick(t, i18n, 'es', page, setPage)}
+                >
+                  Español
+                </li>
+              </AppMenu>
+            </LanguageButtonStyled>
+          )
+        }}
       </AppContext.Consumer>
     )
   }
@@ -131,22 +182,23 @@ class ThemeButton extends Component {
     return (
       <AppContext.Consumer>
         {({ themeVisible, setThemeVisible, toggleMenuVisible }) => (
-          <ThemeButtonStyled
-            title="Change theme"
-            onClick={() => toggleMenuVisible(themeVisible, setThemeVisible)}
-          >
-            <ThemeIcon
-              style={{ width: '18px', height: '18px', fill: 'white' }}
-            />
-            <Language>DARK</Language>
-            <ArrowIcon
-              style={{ width: '10px', height: '10px', fill: 'white' }}
-            />
-            <AppMenu menuVisible={themeVisible}>
-              <li>Dark</li>
-              <li>Light</li>
-            </AppMenu>
-          </ThemeButtonStyled>
+          <ThemeContext.Consumer>
+            {({ dark, toggleTheme }) => (
+              <ThemeButtonStyled
+                title="Change theme"
+                onClick={() => toggleMenuVisible(themeVisible, setThemeVisible)}
+              >
+                <ThemeIcon style={LanguageIconStyle} />
+                <Language>{dark ? 'dark' : 'light'}</Language>
+                <ArrowIcon style={ArrowIconStyle} />
+
+                <AppMenu menuVisible={themeVisible}>
+                  <li onClick={() => toggleTheme(true)}>Dark</li>
+                  <li onClick={() => toggleTheme(false)}>Light</li>
+                </AppMenu>
+              </ThemeButtonStyled>
+            )}
+          </ThemeContext.Consumer>
         )}
       </AppContext.Consumer>
     )
@@ -155,19 +207,21 @@ class ThemeButton extends Component {
 
 class AppNavBar extends Component {
   render() {
+    const { t, i18n } = this.props
+
     return (
       <AppNavBarStyled>
         <Logo>CryptoDash</Logo>
         <div className="text-transparent">Space Remaining</div>
 
-        <ControlButton name="dashboard" active />
-        <ControlButton name="settings" />
+        <ControlButton t={t} name={t('navbar.dashboard')} active />
+        <ControlButton t={t} name={t('navbar.settings')} />
 
-        <LanguageButton />
+        <LanguageButton t={t} i18n={i18n} />
         <ThemeButton />
       </AppNavBarStyled>
     )
   }
 }
 
-export default AppNavBar
+export default withTranslation()(AppNavBar)

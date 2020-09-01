@@ -1,25 +1,30 @@
-import { darkBlueBackground, fontSize2 } from '../Shared/Styles'
 import { SettingsContext } from 'context/SettingsContext'
+import { ThemeContext } from 'context/ThemeContext'
 import fuzzy from 'fuzzy'
 import _ from 'lodash'
 import React, { Component } from 'react'
-import styled from 'styled-components'
+import { withTranslation } from 'react-i18next'
+import styled, { css } from 'styled-components'
+import { fontSize2 } from '../Shared/Styles'
 
-const { Consumer } = SettingsContext
 const SearchGrid = styled.div`
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: auto 1fr;
+  column-gap: 20px;
 `
 const SearchTitle = styled.h2`
   margin: 0;
 `
 const SearchInput = styled.input`
-  ${darkBlueBackground}
   ${fontSize2}
   color: #1163c9;
   border: 1px solid;
   height: 25px;
   place-self: center left;
+  ${({ theme }) =>
+    css`
+      ${theme.darkBlueBackground}
+    `}
 `
 
 class Search extends Component {
@@ -68,23 +73,28 @@ class Search extends Component {
   }
 
   render() {
+    const { t } = this.props
+
     return (
-      <Consumer>
-        {({ coins, setFilteredCoins }) => {
-          return (
-            <SearchGrid>
-              <SearchTitle>Search all coins</SearchTitle>
-              <SearchInput
-                onKeyUp={event =>
-                  this.handleKeyUp(event, coins, setFilteredCoins)
-                }
-              />
-            </SearchGrid>
-          )
-        }}
-      </Consumer>
+      <SettingsContext.Consumer>
+        {({ coins, setFilteredCoins }) => (
+          <ThemeContext.Consumer>
+            {({ theme }) => (
+              <SearchGrid>
+                <SearchTitle>{t('settings.search')}</SearchTitle>
+                <SearchInput
+                  theme={theme}
+                  onKeyUp={event =>
+                    this.handleKeyUp(event, coins, setFilteredCoins)
+                  }
+                />
+              </SearchGrid>
+            )}
+          </ThemeContext.Consumer>
+        )}
+      </SettingsContext.Consumer>
     )
   }
 }
 
-export default Search
+export default withTranslation()(Search)

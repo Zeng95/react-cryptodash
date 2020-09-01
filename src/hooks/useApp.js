@@ -1,12 +1,14 @@
 import cc from 'cryptocompare'
 import moment from 'moment'
-import { useEffect, useState, useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { isEmpty } from '../utils'
 
 const TIME_UNITS = 10 // 10 days, 10 months or 10 weeks
 
-function useApp(defaultPage) {
-  const [page, setPage] = useState(defaultPage || 'dashboard')
+function useApp() {
+  const { t } = useTranslation()
+  const [page, setPage] = useState(t('navbar.dashboard'))
   const [firstVisit, setFirstVisit] = useState(false)
   const [prices, setPrices] = useState([])
   const [historicalPrices, setHistoricalPrices] = useState([])
@@ -68,10 +70,10 @@ function useApp(defaultPage) {
     [timeInterval]
   )
 
-  const saveSettings = () => {
+  const saveSettings = useCallback(() => {
     setFirstVisit(true)
-    setPage('settings')
-  }
+    setPage(t('navbar.settings'))
+  }, [t])
 
   const confirmFavorites = favorites => {
     localStorage.setItem(
@@ -80,7 +82,7 @@ function useApp(defaultPage) {
     )
 
     setFirstVisit(false)
-    setPage('dashboard')
+    setPage(t('navbar.dashboard'))
   }
 
   const handleChangeOnChartSelect = event => {
@@ -93,11 +95,11 @@ function useApp(defaultPage) {
 
     if (!cryptoDashData) {
       saveSettings()
-    } else if (!firstVisit && page === 'dashboard') {
+    } else if (!firstVisit && page === t('navbar.dashboard')) {
       fetchPrices(cryptoDashData.favorites)
       fetchHistorical(cryptoDashData.currentFavCoin)
     }
-  }, [fetchHistorical, firstVisit, page])
+  }, [fetchHistorical, firstVisit, page, saveSettings, t])
 
   return {
     page,

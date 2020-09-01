@@ -1,7 +1,8 @@
-import { Tile } from '../Shared/Tile'
 import { SettingsContext } from 'context/SettingsContext'
+import { ThemeContext } from 'context/ThemeContext'
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { Tile } from '../Shared/Tile'
 
 const SpotlightTile = styled(Tile)`
   text-align: center;
@@ -13,16 +14,25 @@ class CoinSpotlight extends Component {
   render() {
     return (
       <SettingsContext.Consumer>
-        {({ coins, currentFavCoin, coinBaseUrl }) => {
-          const { ImageUrl: imgUrl, Symbol: symbol } = coins[currentFavCoin]
+        {({ coins, currentFavCoin, coinBaseUrl }) => (
+          <ThemeContext.Consumer>
+            {({ theme }) => {
+              const { ImageUrl: imgUrl, Symbol: symbol } = coins[currentFavCoin]
 
-          return (
-            <SpotlightTile>
-              <SpotlightName>{coins[currentFavCoin].CoinName}</SpotlightName>
-              <SpotlightImage src={`${coinBaseUrl}${imgUrl}`} alt={symbol} />
-            </SpotlightTile>
-          )
-        }}
+              return (
+                <SpotlightTile theme={theme}>
+                  <SpotlightName>
+                    {coins[currentFavCoin].CoinName}
+                  </SpotlightName>
+                  <SpotlightImage
+                    src={`${coinBaseUrl}${imgUrl}`}
+                    alt={symbol}
+                  />
+                </SpotlightTile>
+              )
+            }}
+          </ThemeContext.Consumer>
+        )}
       </SettingsContext.Consumer>
     )
   }

@@ -1,9 +1,12 @@
 import { AppContext } from 'context/AppContext'
 import { SettingsContext } from 'context/SettingsContext'
 import React, { Component } from 'react'
+import { withTranslation } from 'react-i18next'
 
 class Content extends Component {
   render() {
+    const { t } = this.props
+
     return (
       <AppContext.Consumer>
         {({ prices, firstVisit }) => {
@@ -11,11 +14,11 @@ class Content extends Component {
             <SettingsContext.Consumer>
               {({ coins }) => {
                 if (!coins) {
-                  return <div>Loading Coins...</div>
+                  return <div>{t('app.coins')}</div>
                 }
 
                 if (!firstVisit && prices.length === 0) {
-                  return <div>Loading Prices...</div>
+                  return <div>{t('app.prices')}</div>
                 }
 
                 return this.props.children
@@ -28,4 +31,4 @@ class Content extends Component {
   }
 }
 
-export default Content
+export default withTranslation()(Content)

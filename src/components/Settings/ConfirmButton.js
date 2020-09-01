@@ -1,9 +1,10 @@
-import { color3, fontSize1, greenBoxShadow } from '../Shared/Styles'
+import { fontSize1, greenBoxShadow } from '../Shared/Styles'
 import { AppContext } from 'context/AppContext'
 import { SettingsContext } from 'context/SettingsContext'
+import { ThemeContext } from 'context/ThemeContext'
 import React, { Component } from 'react'
 import { withTranslation } from 'react-i18next'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const CenterDiv = styled.div`
   display: flex;
@@ -13,7 +14,6 @@ const ConfirmButtonStyled = styled.button`
   margin: 20px;
   border: none;
   padding: 5px;
-  color: ${color3};
   background-color: transparent;
   cursor: pointer;
   ${fontSize1}
@@ -25,6 +25,11 @@ const ConfirmButtonStyled = styled.button`
   &:focus {
     outline: none;
   }
+
+  ${({ theme }) =>
+    css`
+      color: ${theme.color3};
+    `}
 `
 
 class ConfirmButton extends Component {
@@ -33,21 +38,22 @@ class ConfirmButton extends Component {
 
     return (
       <AppContext.Consumer>
-        {value => (
+        {({ confirmFavorites }) => (
           <SettingsContext.Consumer>
-            {({ favoriteCoins: favCoinKeys }) => {
-              const { confirmFavorites } = value
-
-              return (
-                <CenterDiv>
-                  <ConfirmButtonStyled
-                    onClick={() => confirmFavorites(favCoinKeys)}
-                  >
-                    {t('settings.confirm')}
-                  </ConfirmButtonStyled>
-                </CenterDiv>
-              )
-            }}
+            {({ favoriteCoins: favCoinKeys }) => (
+              <ThemeContext.Consumer>
+                {({ theme }) => (
+                  <CenterDiv>
+                    <ConfirmButtonStyled
+                      theme={theme}
+                      onClick={() => confirmFavorites(favCoinKeys)}
+                    >
+                      {t('settings.confirm')}
+                    </ConfirmButtonStyled>
+                  </CenterDiv>
+                )}
+              </ThemeContext.Consumer>
+            )}
           </SettingsContext.Consumer>
         )}
       </AppContext.Consumer>

@@ -1,6 +1,7 @@
-import Page from '../Shared/Page'
 import React, { Component } from 'react'
+import { withTranslation } from 'react-i18next'
 import styled from 'styled-components'
+import Page from '../Shared/Page'
 import CoinSpotlight from './CoinSpotlight'
 import PriceChart from './PriceChart'
 import PriceGrid from './PriceGrid'
@@ -14,8 +15,10 @@ const ChartGrid = styled.div`
 
 class Dashboard extends Component {
   render() {
+    const { t } = this.props
+
     return (
-      <Page name="dashboard">
+      <Page name={t('navbar.dashboard')}>
         <PriceGrid />
 
         <ChartGrid>
@@ -27,4 +30,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard
+export default withTranslation()(Dashboard)

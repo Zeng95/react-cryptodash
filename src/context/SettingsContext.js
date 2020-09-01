@@ -6,9 +6,12 @@ const SettingsContext = React.createContext()
 
 function SettingsContextProvider(props) {
   const coins = useCoins()
-  const { Provider } = SettingsContext
 
-  return <Provider value={{ ...coins }}>{props.children}</Provider>
+  return (
+    <SettingsContext.Provider value={{ ...coins }}>
+      {props.children}
+    </SettingsContext.Provider>
+  )
 }
 
 export { SettingsContext, SettingsContextProvider }
