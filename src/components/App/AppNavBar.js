@@ -194,7 +194,7 @@ class ThemeButton extends Component {
     if (language === 'en') {
       return isDark ? 'dark' : 'light'
     } else if (language === 'es') {
-      return isDark ? 'oscuro' : 'ligero'
+      return isDark ? 'oscuro' : 'claro'
     } else if (language === 'zh') {
       return isDark ? '深色' : '浅色'
     }
