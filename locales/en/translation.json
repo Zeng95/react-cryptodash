@@ -13,6 +13,6 @@
     "search": "Search all coins"
   },
   "dashboard": {
-    "historicalPrices": "Cargando datos históricos..."
+    "historicalPrices": "Loading Historical Data..."
   }
 }
