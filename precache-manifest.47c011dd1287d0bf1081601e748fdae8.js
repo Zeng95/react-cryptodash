@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8d764f6a67aa7b113b241a031bee264d",
+    "revision": "fe72261d3bab0c229882839449fce5bf",
     "url": "/react-cryptodash/index.html"
   },
   {
-    "revision": "ecbe9fc2eb2f49942161",
+    "revision": "763a891d0c8d1da777b9",
     "url": "/react-cryptodash/static/css/2.764ccc25.chunk.css"
   },
   {
-    "revision": "d3279144ff05bf0efca3",
+    "revision": "0346ad314183f6a6152f",
     "url": "/react-cryptodash/static/css/main.a824e3ca.chunk.css"
   },
   {
-    "revision": "ecbe9fc2eb2f49942161",
-    "url": "/react-cryptodash/static/js/2.257ab4ff.chunk.js"
+    "revision": "763a891d0c8d1da777b9",
+    "url": "/react-cryptodash/static/js/2.83b5cf8e.chunk.js"
   },
   {
     "revision": "64bea2e190f27355a76963b8cb94bb7b",
-    "url": "/react-cryptodash/static/js/2.257ab4ff.chunk.js.LICENSE.txt"
+    "url": "/react-cryptodash/static/js/2.83b5cf8e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "d3279144ff05bf0efca3",
-    "url": "/react-cryptodash/static/js/main.f2e22a5e.chunk.js"
+    "revision": "0346ad314183f6a6152f",
+    "url": "/react-cryptodash/static/js/main.d9ac2f15.chunk.js"
   },
   {
     "revision": "3a6e6ad4a9e20167c140",
