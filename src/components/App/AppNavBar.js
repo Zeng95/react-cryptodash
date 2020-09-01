@@ -1,6 +1,8 @@
 import { ReactComponent as ArrowIcon } from 'assets/arrow.svg'
 import { ReactComponent as LanguageIcon } from 'assets/language.svg'
+import { ReactComponent as LanguageSolidIcon } from 'assets/language-solid.svg'
 import { ReactComponent as ThemeIcon } from 'assets/theme.svg'
+import { ReactComponent as ThemeSolidIcon } from 'assets/theme-solid.svg'
 import { AppContext } from 'context/AppContext'
 import { SettingsContext } from 'context/SettingsContext'
 import { ThemeContext } from 'context/ThemeContext'
@@ -10,8 +12,6 @@ import styled, { css } from 'styled-components'
 import { greenBoxShadow } from '../Shared/Styles'
 import AppMenu from './AppMenu'
 
-const LanguageIconStyle = { width: '18px', height: '18px', fill: 'white' }
-const ArrowIconStyle = { width: '10px', height: '10px', fill: 'white' }
 const AppNavBarStyled = styled.header`
   display: grid;
   grid-template-columns: 180px auto 100px 100px 120px 120px;
@@ -44,8 +44,11 @@ const LanguageButtonStyled = styled(BasicButton)`
   padding: 6px 8px;
   transition: all 0.2s;
   &:hover {
-    background-color: #061a44;
     ${greenBoxShadow}
+    ${({ theme }) =>
+      css`
+        ${theme.lightBlueBackground}
+      `}
   }
 `
 const Language = styled.span`
@@ -128,50 +131,51 @@ class LanguageButton extends Component {
   }
 
   render() {
-    const { t, i18n } = this.props
+    const { t, i18n, isDark, theme, langIconStyle, arrowIconStyle } = this.props
 
     return (
       <AppContext.Consumer>
-        {value => {
-          const {
-            page,
-            setPage,
-            languageVisible,
-            setLanguageVisible,
-            toggleMenuVisible
-          } = value
+        {({
+          page,
+          setPage,
+          languageVisible,
+          setLanguageVisible,
+          toggleMenuVisible
+        }) => (
+          <LanguageButtonStyled
+            theme={theme}
+            title="Change language"
+            onClick={() =>
+              toggleMenuVisible(languageVisible, setLanguageVisible)
+            }
+          >
+            {isDark ? (
+              <LanguageIcon style={langIconStyle} />
+            ) : (
+              <LanguageSolidIcon style={langIconStyle} />
+            )}
+            <Language>{this.getLanguage(i18n)}</Language>
+            <ArrowIcon style={arrowIconStyle} />
 
-          return (
-            <LanguageButtonStyled
-              title="Change language"
-              onClick={() =>
-                toggleMenuVisible(languageVisible, setLanguageVisible)
-              }
-            >
-              <LanguageIcon style={LanguageIconStyle} />
-              <Language>{this.getLanguage(i18n)}</Language>
-              <ArrowIcon style={ArrowIconStyle} />
-
-              <AppMenu menuVisible={languageVisible}>
-                <li
-                  onClick={() => this.handleClick(t, i18n, 'en', page, setPage)}
-                >
-                  English
-                </li>
-                <li
-                  onClick={() => this.handleClick(t, i18n, 'zh', page, setPage)}
-                >
-                  中文
-                </li>
-                <li
-                  onClick={() => this.handleClick(t, i18n, 'es', page, setPage)}
-                >
-                  Español
-                </li>
-              </AppMenu>
-            </LanguageButtonStyled>
-          )
-        }}
+            <AppMenu menuVisible={languageVisible}>
+              <li
+                onClick={() => this.handleClick(t, i18n, 'en', page, setPage)}
+              >
+                English
+              </li>
+              <li
+                onClick={() => this.handleClick(t, i18n, 'zh', page, setPage)}
+              >
+                中文
+              </li>
+              <li
+                onClick={() => this.handleClick(t, i18n, 'es', page, setPage)}
+              >
+                Español
+              </li>
+            </AppMenu>
+          </LanguageButtonStyled>
+        )}
       </AppContext.Consumer>
     )
   }
@@ -179,26 +183,35 @@ class LanguageButton extends Component {
 
 class ThemeButton extends Component {
   render() {
+    const {
+      isDark,
+      theme,
+      toggleTheme,
+      langIconStyle,
+      arrowIconStyle
+    } = this.props
+
     return (
       <AppContext.Consumer>
         {({ themeVisible, setThemeVisible, toggleMenuVisible }) => (
-          <ThemeContext.Consumer>
-            {({ dark, toggleTheme }) => (
-              <ThemeButtonStyled
-                title="Change theme"
-                onClick={() => toggleMenuVisible(themeVisible, setThemeVisible)}
-              >
-                <ThemeIcon style={LanguageIconStyle} />
-                <Language>{dark ? 'dark' : 'light'}</Language>
-                <ArrowIcon style={ArrowIconStyle} />
-
-                <AppMenu menuVisible={themeVisible}>
-                  <li onClick={() => toggleTheme(true)}>Dark</li>
-                  <li onClick={() => toggleTheme(false)}>Light</li>
-                </AppMenu>
-              </ThemeButtonStyled>
+          <ThemeButtonStyled
+            theme={theme}
+            title="Change theme"
+            onClick={() => toggleMenuVisible(themeVisible, setThemeVisible)}
+          >
+            {isDark ? (
+              <ThemeIcon style={langIconStyle} />
+            ) : (
+              <ThemeSolidIcon style={langIconStyle} />
             )}
-          </ThemeContext.Consumer>
+            <Language>{isDark ? 'dark' : 'light'}</Language>
+            <ArrowIcon style={arrowIconStyle} />
+
+            <AppMenu menuVisible={themeVisible}>
+              <li onClick={() => toggleTheme(true)}>Dark</li>
+              <li onClick={() => toggleTheme(false)}>Light</li>
+            </AppMenu>
+          </ThemeButtonStyled>
         )}
       </AppContext.Consumer>
     )
@@ -210,16 +223,46 @@ class AppNavBar extends Component {
     const { t, i18n } = this.props
 
     return (
-      <AppNavBarStyled>
-        <Logo>CryptoDash</Logo>
-        <div className="text-transparent">Space Remaining</div>
+      <ThemeContext.Consumer>
+        {({ dark, theme, toggleTheme }) => {
+          const languageIconStyle = {
+            width: '18px',
+            height: '18px',
+            fill: theme.color4
+          }
+          const arrowIconStyle = {
+            width: '10px',
+            height: '10px',
+            fill: theme.color4
+          }
 
-        <ControlButton t={t} name={t('navbar.dashboard')} active />
-        <ControlButton t={t} name={t('navbar.settings')} />
+          return (
+            <AppNavBarStyled>
+              <Logo>CryptoDash</Logo>
+              <div className="text-transparent">Space Remaining</div>
 
-        <LanguageButton t={t} i18n={i18n} />
-        <ThemeButton />
-      </AppNavBarStyled>
+              <ControlButton t={t} name={t('navbar.dashboard')} active />
+              <ControlButton t={t} name={t('navbar.settings')} />
+
+              <LanguageButton
+                t={t}
+                i18n={i18n}
+                isDark={dark}
+                theme={theme}
+                langIconStyle={languageIconStyle}
+                arrowIconStyle={arrowIconStyle}
+              />
+              <ThemeButton
+                isDark={dark}
+                theme={theme}
+                langIconStyle={languageIconStyle}
+                arrowIconStyle={arrowIconStyle}
+                toggleTheme={toggleTheme}
+              />
+            </AppNavBarStyled>
+          )
+        }}
+      </ThemeContext.Consumer>
     )
   }
 }
