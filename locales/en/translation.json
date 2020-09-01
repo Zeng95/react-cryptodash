@@ -1,6 +1,18 @@
 {
+  "app": {
+    "coins": "Loading Coins...",
+    "prices": "Loading Prices..."
+  },
   "navbar": {
-    "dashboard-button": "Dashboard",
-    "settings-button": "Settings"
+    "dashboard": "dashboard",
+    "settings": "settings"
+  },
+  "settings": {
+    "welcome": "Welcome to CryptoDash, please select your favorite coins to begin.",
+    "confirm": "Confirm Favorites",
+    "search": "Search all coins"
+  },
+  "dashboard": {
+    "historicalPrices": "Cargando datos históricos..."
   }
 }

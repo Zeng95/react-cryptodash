@@ -1,0 +1,18 @@
+{
+  "app": {
+    "coins": "正在加载币...",
+    "prices": "正在加载价格..."
+  },
+  "navbar": {
+    "dashboard": "仪表盘",
+    "settings": "设置"
+  },
+  "settings": {
+    "welcome": "欢迎使用CryptoDash，请选择你喜欢的币开始。",
+    "confirm": "确认收藏夹",
+    "search": "搜索所有币种"
+  },
+  "dashboard": {
+    "historicalPrices": "正在加载历史数据..."
+  }
+}

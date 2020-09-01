@@ -1,29 +1,32 @@
 {
   "files": {
-    "main.css": "/react-cryptodash/static/css/main.89db6624.chunk.css",
-    "main.js": "/react-cryptodash/static/js/main.c7e69b64.chunk.js",
-    "main.js.map": "/react-cryptodash/static/js/main.c7e69b64.chunk.js.map",
+    "main.css": "/react-cryptodash/static/css/main.a824e3ca.chunk.css",
+    "main.js": "/react-cryptodash/static/js/main.cabcebde.chunk.js",
+    "main.js.map": "/react-cryptodash/static/js/main.cabcebde.chunk.js.map",
     "runtime-main.js": "/react-cryptodash/static/js/runtime-main.4db23ac9.js",
     "runtime-main.js.map": "/react-cryptodash/static/js/runtime-main.4db23ac9.js.map",
     "static/css/2.764ccc25.chunk.css": "/react-cryptodash/static/css/2.764ccc25.chunk.css",
-    "static/js/2.46f39015.chunk.js": "/react-cryptodash/static/js/2.46f39015.chunk.js",
-    "static/js/2.46f39015.chunk.js.map": "/react-cryptodash/static/js/2.46f39015.chunk.js.map",
+    "static/js/2.257ab4ff.chunk.js": "/react-cryptodash/static/js/2.257ab4ff.chunk.js",
+    "static/js/2.257ab4ff.chunk.js.map": "/react-cryptodash/static/js/2.257ab4ff.chunk.js.map",
     "index.html": "/react-cryptodash/index.html",
-    "precache-manifest.c1707d3fbe36c12f55d18ef0990c3dcc.js": "/react-cryptodash/precache-manifest.c1707d3fbe36c12f55d18ef0990c3dcc.js",
+    "precache-manifest.331cd3840c185c94fbf001d5e9a548f5.js": "/react-cryptodash/precache-manifest.331cd3840c185c94fbf001d5e9a548f5.js",
     "service-worker.js": "/react-cryptodash/service-worker.js",
     "static/css/2.764ccc25.chunk.css.map": "/react-cryptodash/static/css/2.764ccc25.chunk.css.map",
-    "static/css/main.89db6624.chunk.css.map": "/react-cryptodash/static/css/main.89db6624.chunk.css.map",
-    "static/js/2.46f39015.chunk.js.LICENSE.txt": "/react-cryptodash/static/js/2.46f39015.chunk.js.LICENSE.txt",
+    "static/css/main.a824e3ca.chunk.css.map": "/react-cryptodash/static/css/main.a824e3ca.chunk.css.map",
+    "static/js/2.257ab4ff.chunk.js.LICENSE.txt": "/react-cryptodash/static/js/2.257ab4ff.chunk.js.LICENSE.txt",
     "static/media/arrow.9aef94ce.svg": "/react-cryptodash/static/media/arrow.9aef94ce.svg",
+    "static/media/getFetch.cjs": "/react-cryptodash/static/media/getFetch.013f0b90.cjs",
     "static/media/hearts.95b56fc3.svg": "/react-cryptodash/static/media/hearts.95b56fc3.svg",
+    "static/media/language-solid.9f5870fa.svg": "/react-cryptodash/static/media/language-solid.9f5870fa.svg",
     "static/media/language.d8843e92.svg": "/react-cryptodash/static/media/language.d8843e92.svg",
+    "static/media/theme-solid.2dcb9a7e.svg": "/react-cryptodash/static/media/theme-solid.2dcb9a7e.svg",
     "static/media/theme.c1069b4e.svg": "/react-cryptodash/static/media/theme.c1069b4e.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.4db23ac9.js",
     "static/css/2.764ccc25.chunk.css",
-    "static/js/2.46f39015.chunk.js",
-    "static/css/main.89db6624.chunk.css",
-    "static/js/main.c7e69b64.chunk.js"
+    "static/js/2.257ab4ff.chunk.js",
+    "static/css/main.a824e3ca.chunk.css",
+    "static/js/main.cabcebde.chunk.js"
   ]
 }
