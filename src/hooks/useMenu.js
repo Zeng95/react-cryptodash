@@ -4,8 +4,12 @@ function useMenu() {
   const [languageVisible, setLanguageVisible] = useState(false)
   const [themeVisible, setThemeVisible] = useState(false)
 
-  const toggleMenuVisible = (state, handler) => {
-    handler(!state)
+  const showMenuVisible = handler => {
+    handler(true)
+  }
+
+  const hideMenuVisible = handler => {
+    handler(false)
   }
 
   return {
@@ -15,7 +19,8 @@ function useMenu() {
     themeVisible,
     setThemeVisible,
 
-    toggleMenuVisible
+    showMenuVisible,
+    hideMenuVisible
   }
 }
 

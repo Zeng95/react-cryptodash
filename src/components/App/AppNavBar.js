@@ -11,6 +11,7 @@ import { withTranslation } from 'react-i18next'
 import styled, { css } from 'styled-components'
 import { greenBoxShadow } from '../Shared/Styles'
 import AppMenu from './AppMenu'
+import { TruckFlatbed } from 'styled-icons/bootstrap'
 
 const AppNavBarStyled = styled.header`
   display: grid;
@@ -109,19 +110,23 @@ class ControlButton extends Component {
 
 class LanguageButton extends Component {
   handleClick(t, i18n, language, page, setPage) {
-    if (page === t('navbar.dashboard')) {
-      i18n.changeLanguage(language, (err, t) => {
-        if (err) return console.log('something went wrong loading', err)
+    return new Promise(resolve => {
+      if (page === t('navbar.dashboard')) {
+        i18n.changeLanguage(language, (err, t) => {
+          if (err) return console.log('something went wrong loading', err)
 
-        setPage(t('navbar.dashboard'))
-      })
-    } else if (page === t('navbar.settings')) {
-      i18n.changeLanguage(language, (err, t) => {
-        if (err) return console.log('something went wrong loading', err)
+          setPage(t('navbar.dashboard'))
+          resolve()
+        })
+      } else if (page === t('navbar.settings')) {
+        i18n.changeLanguage(language, (err, t) => {
+          if (err) return console.log('something went wrong loading', err)
 
-        setPage(t('navbar.settings'))
-      })
-    }
+          setPage(t('navbar.settings'))
+          resolve()
+        })
+      }
+    })
   }
 
   getLanguage(i18n) {
@@ -146,17 +151,14 @@ class LanguageButton extends Component {
           setPage,
           languageVisible,
           setLanguageVisible,
-          toggleMenuVisible
+          showMenuVisible,
+          hideMenuVisible
         }) => (
           <LanguageButtonStyled
             theme={theme}
             title="Change language"
-            onMouseEnter={() =>
-              toggleMenuVisible(languageVisible, setLanguageVisible)
-            }
-            onMouseLeave={() =>
-              toggleMenuVisible(languageVisible, setLanguageVisible)
-            }
+            onMouseEnter={() => showMenuVisible(setLanguageVisible)}
+            onMouseLeave={() => hideMenuVisible(setLanguageVisible)}
           >
             {isDark ? (
               <LanguageIcon style={langIconStyle} />
@@ -168,17 +170,29 @@ class LanguageButton extends Component {
 
             <AppMenu menuVisible={languageVisible}>
               <li
-                onClick={() => this.handleClick(t, i18n, 'en', page, setPage)}
+                onClick={() =>
+                  this.handleClick(t, i18n, 'en', page, setPage).then(() =>
+                    hideMenuVisible(setLanguageVisible)
+                  )
+                }
               >
                 English
               </li>
               <li
-                onClick={() => this.handleClick(t, i18n, 'zh', page, setPage)}
+                onClick={() =>
+                  this.handleClick(t, i18n, 'zh', page, setPage).then(() =>
+                    hideMenuVisible(setLanguageVisible)
+                  )
+                }
               >
                 中文
               </li>
               <li
-                onClick={() => this.handleClick(t, i18n, 'es', page, setPage)}
+                onClick={() =>
+                  this.handleClick(t, i18n, 'es', page, setPage).then(() =>
+                    hideMenuVisible(setLanguageVisible)
+                  )
+                }
               >
                 Español
               </li>
@@ -191,6 +205,13 @@ class LanguageButton extends Component {
 }
 
 class ThemeButton extends Component {
+  handleClick(toggleTheme, isDark) {
+    return new Promise(resolve => {
+      toggleTheme(isDark)
+      resolve()
+    })
+  }
+
   getTheme(i18n, isDark) {
     const language = i18n.language
 
@@ -216,16 +237,17 @@ class ThemeButton extends Component {
 
     return (
       <AppContext.Consumer>
-        {({ themeVisible, setThemeVisible, toggleMenuVisible }) => (
+        {({
+          themeVisible,
+          setThemeVisible,
+          showMenuVisible,
+          hideMenuVisible
+        }) => (
           <ThemeButtonStyled
             theme={theme}
             title="Change theme"
-            onMouseEnter={() =>
-              toggleMenuVisible(themeVisible, setThemeVisible)
-            }
-            onMouseLeave={() =>
-              toggleMenuVisible(themeVisible, setThemeVisible)
-            }
+            onMouseEnter={() => showMenuVisible(setThemeVisible)}
+            onMouseLeave={() => hideMenuVisible(setThemeVisible)}
           >
             {isDark ? (
               <ThemeIcon style={langIconStyle} />
@@ -236,10 +258,22 @@ class ThemeButton extends Component {
             <ArrowIcon style={arrowIconStyle} />
 
             <AppMenu menuVisible={themeVisible}>
-              <li onClick={() => toggleTheme(true)}>
+              <li
+                onClick={() =>
+                  this.handleClick(toggleTheme, true).then(() =>
+                    hideMenuVisible(setThemeVisible)
+                  )
+                }
+              >
                 {t('navbar.theme.dark')}
               </li>
-              <li onClick={() => toggleTheme(false)}>
+              <li
+                onClick={() =>
+                  this.handleClick(toggleTheme, false).then(() =>
+                    hideMenuVisible(setThemeVisible)
+                  )
+                }
+              >
                 {t('navbar.theme.light')}
               </li>
             </AppMenu>
