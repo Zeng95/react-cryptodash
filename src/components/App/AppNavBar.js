@@ -11,7 +11,6 @@ import { withTranslation } from 'react-i18next'
 import styled, { css } from 'styled-components'
 import { greenBoxShadow } from '../Shared/Styles'
 import AppMenu from './AppMenu'
-import { TruckFlatbed } from 'styled-icons/bootstrap'
 
 const AppNavBarStyled = styled.header`
   display: grid;
