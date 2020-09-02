@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/react-cryptodash/static/css/main.a824e3ca.chunk.css",
-    "main.js": "/react-cryptodash/static/js/main.1fd44023.chunk.js",
-    "main.js.map": "/react-cryptodash/static/js/main.1fd44023.chunk.js.map",
+    "main.js": "/react-cryptodash/static/js/main.f36f7803.chunk.js",
+    "main.js.map": "/react-cryptodash/static/js/main.f36f7803.chunk.js.map",
     "runtime-main.js": "/react-cryptodash/static/js/runtime-main.4db23ac9.js",
     "runtime-main.js.map": "/react-cryptodash/static/js/runtime-main.4db23ac9.js.map",
     "static/css/2.764ccc25.chunk.css": "/react-cryptodash/static/css/2.764ccc25.chunk.css",
     "static/js/2.a86d1441.chunk.js": "/react-cryptodash/static/js/2.a86d1441.chunk.js",
     "static/js/2.a86d1441.chunk.js.map": "/react-cryptodash/static/js/2.a86d1441.chunk.js.map",
     "index.html": "/react-cryptodash/index.html",
-    "precache-manifest.2b8fa95e4d35517a53aa5d46fa846604.js": "/react-cryptodash/precache-manifest.2b8fa95e4d35517a53aa5d46fa846604.js",
+    "precache-manifest.cef0b1881b7f6540c05e757fdeca5bce.js": "/react-cryptodash/precache-manifest.cef0b1881b7f6540c05e757fdeca5bce.js",
     "service-worker.js": "/react-cryptodash/service-worker.js",
     "static/css/2.764ccc25.chunk.css.map": "/react-cryptodash/static/css/2.764ccc25.chunk.css.map",
     "static/css/main.a824e3ca.chunk.css.map": "/react-cryptodash/static/css/main.a824e3ca.chunk.css.map",
@@ -27,6 +27,6 @@
     "static/css/2.764ccc25.chunk.css",
     "static/js/2.a86d1441.chunk.js",
     "static/css/main.a824e3ca.chunk.css",
-    "static/js/main.1fd44023.chunk.js"
+    "static/js/main.f36f7803.chunk.js"
   ]
 }
