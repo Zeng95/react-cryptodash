@@ -26,7 +26,7 @@ export default styled.ul`
   ${({ menuVisible }) =>
     menuVisible &&
     css`
-      top: 32px;
+      top: 30px;
       opacity: 1;
       z-index: 1000;
     `}

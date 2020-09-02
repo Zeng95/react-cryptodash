@@ -151,7 +151,10 @@ class LanguageButton extends Component {
           <LanguageButtonStyled
             theme={theme}
             title="Change language"
-            onClick={() =>
+            onMouseEnter={() =>
+              toggleMenuVisible(languageVisible, setLanguageVisible)
+            }
+            onMouseLeave={() =>
               toggleMenuVisible(languageVisible, setLanguageVisible)
             }
           >
@@ -217,7 +220,12 @@ class ThemeButton extends Component {
           <ThemeButtonStyled
             theme={theme}
             title="Change theme"
-            onClick={() => toggleMenuVisible(themeVisible, setThemeVisible)}
+            onMouseEnter={() =>
+              toggleMenuVisible(themeVisible, setThemeVisible)
+            }
+            onMouseLeave={() =>
+              toggleMenuVisible(themeVisible, setThemeVisible)
+            }
           >
             {isDark ? (
               <ThemeIcon style={langIconStyle} />

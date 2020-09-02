@@ -59,7 +59,7 @@ class Search extends Component {
     //   const coinName = coin.CoinName
     //   return fuzzyResults.includes(symbolKey) || fuzzyResults.includes(coinName)
     // })
-  }, 1000)
+  }, 1500)
 
   handleKeyUp(event, coins, setFilteredCoins) {
     const inputValue = event.target.value

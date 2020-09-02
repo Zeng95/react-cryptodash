@@ -10,6 +10,7 @@ import {
 } from '../Settings/CoinTileHeaderGrid'
 import { fontSize3, fontSizeBig, greenBoxShadow } from '../Shared/Styles.js'
 import { SelectableTile } from '../Shared/Tile'
+import _ from 'lodash'
 
 // pointer-events is going to disbale on the current favorite coin
 const PriceTileStyled = styled(SelectableTile)`
@@ -24,7 +25,7 @@ const PriceTileStyled = styled(SelectableTile)`
     `}
 
   ${props =>
-    props.currentFavCoin &&
+    props.isCurrentFavCoin &&
     css`
       pointer-events: none;
       ${greenBoxShadow}
@@ -47,11 +48,24 @@ const TickerPrice = styled.div`
 `
 
 class PriceTile extends Component {
+  handleClick(symbol, setCurrentFavorite, fetchHistorical) {
+    setCurrentFavorite(symbol)
+
+    // 使用 debounce 防止用户在短时间内频繁点击触发请求
+    _.debounce(() => {
+      const { currentFavCoin } = JSON.parse(localStorage.getItem('cryptoDash'))
+
+      if (currentFavCoin === symbol) {
+        fetchHistorical(symbol)
+      }
+    }, 1500)()
+  }
+
   render() {
     const {
       symbol,
       data,
-      currentFavCoin,
+      isCurrentFavCoin,
       setCurrentFavorite,
       fetchHistorical,
       theme
@@ -60,11 +74,10 @@ class PriceTile extends Component {
     return (
       <PriceTileStyled
         theme={theme}
-        currentFavCoin={currentFavCoin}
-        onClick={() => {
-          setCurrentFavorite(symbol)
-          fetchHistorical(symbol)
-        }}
+        isCurrentFavCoin={isCurrentFavCoin}
+        onClick={() =>
+          this.handleClick(symbol, setCurrentFavorite, fetchHistorical)
+        }
       >
         <CoinTileHeaderGridStyled>
           <span>{symbol}</span>
@@ -81,11 +94,24 @@ class PriceTile extends Component {
 }
 
 class PriceTileCompact extends Component {
+  handleClick(symbol, setCurrentFavorite, fetchHistorical) {
+    setCurrentFavorite(symbol)
+
+    // 使用 debounce 防止用户在短时间内频繁点击触发请求
+    _.debounce(() => {
+      const { currentFavCoin } = JSON.parse(localStorage.getItem('cryptoDash'))
+
+      if (currentFavCoin === symbol) {
+        fetchHistorical(symbol)
+      }
+    }, 1500)()
+  }
+
   render() {
     const {
       symbol,
       data,
-      currentFavCoin,
+      isCurrentFavCoin,
       setCurrentFavorite,
       fetchHistorical,
       theme
@@ -95,11 +121,10 @@ class PriceTileCompact extends Component {
       <PriceTileStyled
         compact
         theme={theme}
-        currentFavCoin={currentFavCoin}
-        onClick={() => {
-          setCurrentFavorite(symbol)
-          fetchHistorical(symbol)
-        }}
+        isCurrentFavCoin={isCurrentFavCoin}
+        onClick={() =>
+          this.handleClick(symbol, setCurrentFavorite, fetchHistorical)
+        }
       >
         <JustifyLeft>{symbol}</JustifyLeft>
 
@@ -130,7 +155,7 @@ class TileClass extends Component {
                     <PriceTileCompact
                       data={data}
                       symbol={symbol}
-                      currentFavCoin={currentFavCoin === symbol}
+                      isCurrentFavCoin={currentFavCoin === symbol}
                       setCurrentFavorite={setCurrentFavorite}
                       fetchHistorical={fetchHistorical}
                       theme={theme}
@@ -139,7 +164,7 @@ class TileClass extends Component {
                     <PriceTile
                       data={data}
                       symbol={symbol}
-                      currentFavCoin={currentFavCoin === symbol}
+                      isCurrentFavCoin={currentFavCoin === symbol}
                       setCurrentFavorite={setCurrentFavorite}
                       fetchHistorical={fetchHistorical}
                       theme={theme}
