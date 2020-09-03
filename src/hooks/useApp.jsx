@@ -12,7 +12,7 @@ function useApp() {
   const [firstVisit, setFirstVisit] = useState(false)
   const [prices, setPrices] = useState([])
   const [historicalPrices, setHistoricalPrices] = useState([])
-  const [timeInterval, setTimeInterval] = useState('months')
+  const [timeInterval, setTimeInterval] = useState('days')
 
   const fetchPrices = async favorites => {
     const priceList = []

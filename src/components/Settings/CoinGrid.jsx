@@ -6,8 +6,8 @@ import CoinTile from './CoinTile'
 const { Consumer } = SettingsContext
 const CoinGridStyled = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   grid-gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   margin-top: 40px;
 `
 

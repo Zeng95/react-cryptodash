@@ -14,15 +14,15 @@ import HighchartsTheme from './HighchartsTheme'
 Highcharts.setOptions(HighchartsTheme)
 
 const LoadingContainer = styled.div`
-  position: absolute;
-  top: 50%;
   left: 50%;
-  transform: translate3d(-50%, -50%, 0);
+  position: absolute;
   text-align: center;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
 `
 const LoadingText = styled.p`
-  margin-top: 0;
   margin-bottom: 30px;
+  margin-top: 0;
 `
 
 class PriceChart extends Component {
@@ -62,7 +62,8 @@ class PriceChart extends Component {
                         {t('dashboard.historicalPrices')}
                       </LoadingText>
                       <Loading
-                        style={{ transform: 'scale(1.6)', fill: theme.color4 }}
+                        style={{ transform: 'scale(1.6)',
+            fill: theme.color4 }}
                       />
                     </LoadingContainer>
                   ) : (

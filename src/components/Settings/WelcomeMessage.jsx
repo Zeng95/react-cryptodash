@@ -4,9 +4,9 @@ import { withTranslation } from 'react-i18next'
 import styled from 'styled-components'
 
 const WelcomeStyled = styled.h1`
-  margin: 0;
-  font-weight: normal;
   font-size: 16px;
+  font-weight: normal;
+  margin: 0;
 `
 
 class Welcome extends Component {

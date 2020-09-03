@@ -2,10 +2,10 @@ import { ThemeContextProvider } from 'context/ThemeContext'
 import 'normalize.css'
 import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom'
-import App from './components/App/'
+import App from './components/App'
 // import i18n (needs to be bundled ;))
 import './i18n'
-import './index.css'
+import './index.scss'
 import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(

@@ -18,31 +18,32 @@ const AppNavBarStyled = styled.header`
   margin-bottom: 40px;
 `
 const Logo = styled.h1`
-  margin: 0;
   font-size: 1.5em;
+  margin: 0;
 `
 
 const BasicButton = styled.button`
-  cursor: pointer;
-  border: none;
-  padding: 0;
   background-color: transparent;
+  border: 0;
   color: inherit;
+  cursor: pointer;
+  padding: 0;
 `
 const ControlButtonStyled = styled(BasicButton)`
   ${props =>
     props.active &&
     css`
-      text-shadow: 0px 0px 20px #03ff03;
+      text-shadow: 0 0 20px #03ff03;
     `}
 `
 const LanguageButtonStyled = styled(BasicButton)`
-  position: relative;
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: center;
   padding: 6px 8px;
+  position: relative;
   transition: all 0.2s;
+
   &:hover {
     ${greenBoxShadow}
     ${({ theme }) =>
@@ -53,7 +54,7 @@ const LanguageButtonStyled = styled(BasicButton)`
 `
 const Language = styled.span`
   display: inline-block;
-  margin: 0px 8px;
+  margin: 0 8px;
   text-transform: uppercase;
 `
 const ThemeButtonStyled = styled(LanguageButtonStyled)``

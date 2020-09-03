@@ -2,8 +2,8 @@ import styled, { css } from 'styled-components'
 import { redBoxShadow, greenBoxShadow } from './Styles'
 
 export const Tile = styled.div`
-  position: relative;
   padding: 10px;
+  position: relative;
   transition: all 0.2s;
   ${({ theme }) =>
     css`
@@ -25,6 +25,6 @@ export const DeletableTile = styled(Tile)`
 `
 // "pointer-events: none;" means users can not select
 export const DisabledTile = styled(Tile)`
-  pointer-events: none;
   opacity: 0.4;
+  pointer-events: none;
 `

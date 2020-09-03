@@ -9,8 +9,8 @@ import Content from '../Shared/Content'
 import AppNavbar from './AppNavbar'
 
 const AppLayout = styled.div`
-  padding: 40px;
   min-height: 100vh;
+  padding: 40px;
   ${({ theme }) =>
     css`
       color: ${theme.color4};

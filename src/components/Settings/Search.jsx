@@ -8,17 +8,17 @@ import styled, { css } from 'styled-components'
 import { fontSize2 } from '../Shared/Styles'
 
 const SearchGrid = styled.div`
+  column-gap: 20px;
   display: grid;
   grid-template-columns: auto 1fr;
-  column-gap: 20px;
 `
 const SearchTitle = styled.h2`
   margin: 0;
 `
 const SearchInput = styled.input`
   ${fontSize2}
-  color: #1163c9;
   border: 1px solid;
+  color: #1163c9;
   height: 25px;
   place-self: center left;
   ${({ theme }) =>

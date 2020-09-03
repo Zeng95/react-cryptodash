@@ -1,6 +1,7 @@
 import { AppContext } from 'context/AppContext'
 import { SettingsContext } from 'context/SettingsContext'
 import { ThemeContext } from 'context/ThemeContext'
+import _ from 'lodash'
 import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
 import { formatNumber } from 'utils'
@@ -8,9 +9,8 @@ import {
   CoinSymbol,
   CoinTileHeaderGridStyled
 } from '../Settings/CoinTileHeaderGrid'
-import { fontSize3, fontSizeBig, greenBoxShadow } from '../Shared/Styles.js'
+import { fontSize3, fontSizeBig, greenBoxShadow } from '../Shared/Styles.jsx'
 import { SelectableTile } from '../Shared/Tile'
-import _ from 'lodash'
 
 // pointer-events is going to disbale on the current favorite coin
 const PriceTileStyled = styled(SelectableTile)`
@@ -19,8 +19,8 @@ const PriceTileStyled = styled(SelectableTile)`
     css`
       display: grid;
       gap: 6px;
-      justify-items: right;
       grid-template-columns: repeat(3, 1fr);
+      justify-items: right;
       ${fontSize3}
     `}
 

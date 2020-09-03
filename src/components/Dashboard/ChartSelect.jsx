@@ -3,12 +3,12 @@ import styled, { css } from 'styled-components'
 
 export default styled.select`
   ${fontSize2}
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  color: #1163c9;
   border: 1px solid;
+  color: #1163c9;
   cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 10px;
   z-index: 1000;
   ${({ theme }) =>
     css`

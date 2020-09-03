@@ -5,8 +5,8 @@ import TileClass from './PriceTile'
 
 const PriceGirdStyled = styled.div`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
   gap: 16px;
+  grid-template-columns: repeat(5, 1fr);
   margin-top: 40px;
 `
 

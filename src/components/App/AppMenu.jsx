@@ -1,24 +1,26 @@
 import { textAlignLeft } from '../Shared/Styles'
 import styled, { css } from 'styled-components'
 
-export default styled.ul`
-  position: absolute;
-  top: 26px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
+const AppMenu = styled.ul`
+  background-color: white;
   border-radius: 4px;
-  padding: 8px 0;
   color: rgba(0, 0, 0, 0.87);
-  background-color: #fff;
-  z-index: -1;
+  left: 50%;
   opacity: 0;
   overflow: hidden;
+  padding: 8px 0;
+  position: absolute;
+  top: 26px;
+  transform: translateX(-50%);
   transition: all 0.2s ease-out;
-  & > li {
+  width: 90%;
+  z-index: -1;
+
+  li {
     ${textAlignLeft}
-    padding: 6px 16px;
     letter-spacing: 0.00938em;
+    padding: 6px 16px;
+
     &:hover {
       background-color: rgba(0, 0, 0, 0.04);
     }
@@ -26,8 +28,10 @@ export default styled.ul`
   ${({ menuVisible }) =>
     menuVisible &&
     css`
-      top: 30px;
       opacity: 1;
+      top: 30px;
       z-index: 1000;
     `}
 `
+
+export default AppMenu

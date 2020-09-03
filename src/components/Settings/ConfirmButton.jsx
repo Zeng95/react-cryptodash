@@ -11,11 +11,11 @@ const CenterDiv = styled.div`
   justify-content: center;
 `
 const ConfirmButtonStyled = styled.button`
-  margin: 20px;
-  border: none;
-  padding: 5px;
   background-color: transparent;
+  border: 0;
   cursor: pointer;
+  margin: 20px;
+  padding: 5px;
   ${fontSize1}
 
   &:hover {
