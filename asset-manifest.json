@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/react-cryptodash/static/css/main.7c1b2fb1.chunk.css",
+    "main.css": "/react-cryptodash/static/css/main.a6208a46.chunk.css",
     "main.js": "/react-cryptodash/static/js/main.d4f99770.chunk.js",
     "main.js.map": "/react-cryptodash/static/js/main.d4f99770.chunk.js.map",
     "runtime-main.js": "/react-cryptodash/static/js/runtime-main.4db23ac9.js",
     "runtime-main.js.map": "/react-cryptodash/static/js/runtime-main.4db23ac9.js.map",
     "static/css/2.764ccc25.chunk.css": "/react-cryptodash/static/css/2.764ccc25.chunk.css",
-    "static/js/2.2535a493.chunk.js": "/react-cryptodash/static/js/2.2535a493.chunk.js",
-    "static/js/2.2535a493.chunk.js.map": "/react-cryptodash/static/js/2.2535a493.chunk.js.map",
+    "static/js/2.e3dd292e.chunk.js": "/react-cryptodash/static/js/2.e3dd292e.chunk.js",
+    "static/js/2.e3dd292e.chunk.js.map": "/react-cryptodash/static/js/2.e3dd292e.chunk.js.map",
     "index.html": "/react-cryptodash/index.html",
-    "precache-manifest.0ccafd39dc9c56812fd6aee505025781.js": "/react-cryptodash/precache-manifest.0ccafd39dc9c56812fd6aee505025781.js",
+    "precache-manifest.f8b9d10ad34e99cf0e24d96d35a16b42.js": "/react-cryptodash/precache-manifest.f8b9d10ad34e99cf0e24d96d35a16b42.js",
     "service-worker.js": "/react-cryptodash/service-worker.js",
     "static/css/2.764ccc25.chunk.css.map": "/react-cryptodash/static/css/2.764ccc25.chunk.css.map",
-    "static/css/main.7c1b2fb1.chunk.css.map": "/react-cryptodash/static/css/main.7c1b2fb1.chunk.css.map",
-    "static/js/2.2535a493.chunk.js.LICENSE.txt": "/react-cryptodash/static/js/2.2535a493.chunk.js.LICENSE.txt",
+    "static/css/main.a6208a46.chunk.css.map": "/react-cryptodash/static/css/main.a6208a46.chunk.css.map",
+    "static/js/2.e3dd292e.chunk.js.LICENSE.txt": "/react-cryptodash/static/js/2.e3dd292e.chunk.js.LICENSE.txt",
     "static/media/arrow.9aef94ce.svg": "/react-cryptodash/static/media/arrow.9aef94ce.svg",
     "static/media/getFetch.cjs": "/react-cryptodash/static/media/getFetch.013f0b90.cjs",
     "static/media/hearts.95b56fc3.svg": "/react-cryptodash/static/media/hearts.95b56fc3.svg",
@@ -25,8 +25,8 @@
   "entrypoints": [
     "static/js/runtime-main.4db23ac9.js",
     "static/css/2.764ccc25.chunk.css",
-    "static/js/2.2535a493.chunk.js",
-    "static/css/main.7c1b2fb1.chunk.css",
+    "static/js/2.e3dd292e.chunk.js",
+    "static/css/main.a6208a46.chunk.css",
     "static/js/main.d4f99770.chunk.js"
   ]
 }
